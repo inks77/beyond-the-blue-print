@@ -32,15 +32,14 @@ export default function Page() {
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8 lg:px-10" aria-label="Main navigation">
         <button onClick={() => scrollTo('top')} className="flex items-center gap-3 text-left" aria-label="Beyond the Blue Print home">
-          <span className="flex size-11 items-center justify-center overflow-hidden bg-primary">
-            <video
-              className="size-full object-cover"
-              src="/beyond-the-blue-print.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-label="Beyond the Blue Print logo"
+          <span className="flex h-11 w-40 items-center justify-center overflow-hidden bg-primary">
+            <Image
+              src="/beyond-the-blue-print-logo.png"
+              alt="Beyond the Blue Print Uganda logo"
+              width={928}
+              height={523}
+              className="size-full object-contain"
+              priority
             />
           </span>
           <span className="max-w-28 text-xs font-semibold uppercase leading-tight tracking-[0.14em]">Beyond the<br />Blue Print</span>
@@ -58,15 +57,14 @@ export default function Page() {
       <section id="top" className="blueprint-grid relative mx-3 mt-2 grid min-h-[620px] items-end overflow-hidden bg-primary px-6 pb-8 pt-24 text-primary-foreground md:mx-5 md:min-h-[650px] md:px-12 md:pb-12 lg:mx-8 lg:px-16">
         <div className="relative z-10 max-w-5xl">
           <p className="mb-7 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-primary-foreground/70"><span className="size-2 bg-accent" /> A business hub for the bold</p>
-          <div className="max-w-5xl" aria-label="Beyond the Blue Print">
-            <video
-              className="h-auto max-h-[410px] w-full max-w-[930px] object-contain object-left"
-              src="/beyond-the-blue-print.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-label="Beyond the Blue Print logo"
+          <div className="w-full max-w-[930px] overflow-hidden bg-primary" aria-label="Beyond the Blue Print">
+            <Image
+              src="/beyond-the-blue-print-logo.png"
+              alt="Beyond the Blue Print Uganda logo"
+              width={928}
+              height={523}
+              className="h-auto w-full object-contain"
+              priority
             />
           </div>
           <div className="mt-10 flex flex-col justify-between gap-7 border-t border-primary-foreground/30 pt-5 md:flex-row md:items-end">
