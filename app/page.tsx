@@ -32,7 +32,17 @@ export default function Page() {
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8 lg:px-10" aria-label="Main navigation">
         <button onClick={() => scrollTo('top')} className="flex items-center gap-3 text-left" aria-label="Beyond the Blue Print home">
-          <span className="flex size-9 items-center justify-center bg-primary font-mono text-sm font-bold text-primary-foreground">BTB</span>
+          <span className="flex size-11 items-center justify-center overflow-hidden bg-primary">
+            <video
+              className="size-full object-cover"
+              src="/beyond-the-blue-print.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label="Beyond the Blue Print logo"
+            />
+          </span>
           <span className="max-w-28 text-xs font-semibold uppercase leading-tight tracking-[0.14em]">Beyond the<br />Blue Print</span>
         </button>
         <div className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] md:flex">
