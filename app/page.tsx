@@ -58,7 +58,17 @@ export default function Page() {
       <section id="top" className="blueprint-grid relative mx-3 mt-2 grid min-h-[620px] items-end overflow-hidden bg-primary px-6 pb-8 pt-24 text-primary-foreground md:mx-5 md:min-h-[650px] md:px-12 md:pb-12 lg:mx-8 lg:px-16">
         <div className="relative z-10 max-w-5xl">
           <p className="mb-7 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-primary-foreground/70"><span className="size-2 bg-accent" /> A business hub for the bold</p>
-          <h1 className="max-w-5xl text-balance font-sans text-[clamp(3.5rem,10vw,9.5rem)] font-black uppercase leading-[0.82] tracking-[-0.07em]">Beyond<br /><span className="text-accent">the blue</span><br />print.</h1>
+          <div className="max-w-5xl" aria-label="Beyond the Blue Print">
+            <video
+              className="h-auto max-h-[410px] w-full max-w-[930px] object-contain object-left"
+              src="/beyond-the-blue-print.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label="Beyond the Blue Print logo"
+            />
+          </div>
           <div className="mt-10 flex flex-col justify-between gap-7 border-t border-primary-foreground/30 pt-5 md:flex-row md:items-end">
             <p className="max-w-md text-pretty text-base leading-6 text-primary-foreground/80 md:text-lg">We connect young entrepreneurs, investors, and established businesses to the people and ideas shaping what comes next.</p>
             <button onClick={() => scrollTo('programs')} className="flex w-fit items-center gap-3 bg-accent px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground transition-transform hover:-translate-y-1">Explore the hub <ArrowUpRight className="size-4" /></button>
