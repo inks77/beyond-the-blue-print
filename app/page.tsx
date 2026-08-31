@@ -30,7 +30,7 @@ export default function Page() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8 lg:px-10" aria-label="Main navigation">
+      <nav className="mx-auto flex w-full items-center justify-between bg-primary px-5 py-5 text-primary-foreground md:px-8 lg:px-10" aria-label="Main navigation">
         <button onClick={() => scrollTo('top')} className="flex items-center gap-3 text-left" aria-label="Beyond the Blue Print home">
           <span className="flex h-11 w-40 items-center justify-center overflow-hidden bg-primary">
             <Image
