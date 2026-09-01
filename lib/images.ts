@@ -127,8 +127,7 @@ const records = {
     width: 1333,
     height: 2000,
     credit: 'Dr Ian Clarke / Clarke Group — on stage in Kampala',
-    status: 'pending',
-    awaiting: 'Add the stage photograph to public/panel-dr-ian-clarke.jpg, then set status to "ready".',
+    status: 'ready',
   },
   'room-audience': {
     id: 'room-audience',
