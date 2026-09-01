@@ -6,6 +6,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { ContactBlock } from '@/components/contact-block'
 import { PageHero } from '@/components/page-hero'
 import { SiteHeader } from '@/components/site-header'
+import { registerHref } from '@/lib/registration'
 import { programBySlug } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -14,24 +15,29 @@ export const metadata: Metadata = {
     'The flagship Beyond the Blue Print gathering: founders, investors, creatives, and established business leaders in one room in Kampala.',
 }
 
+/* Each way in carries the capacity it registers as, so the button opens the
+   form with that already chosen rather than a general contact box. */
 const ways = [
   {
     number: '01',
     title: 'Come as a guest',
     copy: 'Register your interest and we will send the dates, the programme, and how to get a seat the moment they are set.',
     action: 'Register interest',
+    capacity: 'guest',
   },
   {
     number: '02',
     title: 'Take the stage',
     copy: 'We are looking for people with something specific to say — a decision that went badly, a market nobody is watching, a number that surprised you.',
     action: 'Propose a talk',
+    capacity: 'speaker',
   },
   {
     number: '03',
     title: 'Back the room',
     copy: 'Partners make the room possible and get to be part of it properly, not as a logo on a banner.',
     action: 'Partner with us',
+    capacity: 'partner',
   },
 ]
 
@@ -103,7 +109,7 @@ export default function ConferencePage() {
                     <p className="mt-4 text-sm leading-6 text-muted-foreground">{way.copy}</p>
                   </div>
                   <Link
-                    href="/#contact"
+                    href={registerHref(way.capacity)}
                     className="mt-8 flex w-fit items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground underline decoration-accent decoration-2 underline-offset-4"
                   >
                     {way.action} <ArrowUpRight className="size-4" />

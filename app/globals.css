@@ -22,6 +22,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
   --color-brand-blue: var(--brand-blue);
   --font-sans: 'Arial', 'Helvetica Neue', sans-serif;
   --font-mono: 'Courier New', monospace;
@@ -54,6 +55,12 @@
   --border: oklch(0.78 0.025 90);
   --input: oklch(0.78 0.025 90);
   --ring: var(--brand-blue);
+  /* The one colour outside the blue/cream/coral palette. Form validation has
+     to read as wrong at a glance, and coral is the palette's "go" colour --
+     the accent every call to action is painted in -- so it cannot also be the
+     error. Deep enough to clear 4.5:1 on --background (6.35:1) and on the
+     muted panels the form sits on.                                          */
+  --destructive: oklch(0.48 0.19 25);
   --radius: 0rem;
   /* Focus indicator. WCAG 1.4.11/2.4.11 wants 3:1 against whatever the ring
      is drawn on, and --accent itself only manages 2.00:1 on --background.
