@@ -29,10 +29,13 @@
 
 :root {
   color-scheme: light;
-  /* Brand blue. Sampled from the flat backdrop baked into the hero logo video
-     (public/btb-logo.mp4) so the page surface and the video read as one
-     continuous plane with no seam around the video rectangle. Every blue in
-     the design references this token — never the literal.                    */
+  /* Brand blue. The flat backdrop baked into the hero logo video
+     (public/btb-logo.mp4) as a browser actually paints it, so the page surface
+     and the video read as one continuous plane. The video is tagged
+     smpte170m/bt709 limited range: its raw decoded backdrop is #074994, which
+     the browser colour-manages to this value on an sRGB display — that
+     converted value is the one to match, not the raw one. Every blue in the
+     design references this token — never the literal.                        */
   --brand-blue: #154e91;
   --background: oklch(0.97 0.012 90);
   --foreground: oklch(0.16 0.02 255);
@@ -115,6 +118,35 @@ body > * { position: relative; z-index: 1; }
 .blueprint-on-accent {
   --bp-line: color-mix(in srgb, var(--accent-foreground) 8%, transparent);
   --bp-line-strong: color-mix(in srgb, var(--accent-foreground) 13%, transparent);
+}
+
+/* --- Hero logo plate ------------------------------------------------------
+   The logo video carries its own flat blue backdrop plus a soft glow around
+   the mark, so dropped in as a plain rectangle it reads as a lighter panel
+   laid on the hero rather than as part of it. Two things dissolve that
+   rectangle. The plate is stacked *under* the section's blueprint layer, so
+   the drafting lines run unbroken across the video instead of stopping at its
+   edges; the copy stays above both. And the ::after frame fades the surface
+   colour back in over the outer band of the video, so the video's edge — and
+   any residual drift from the browser's video colour management — has nowhere
+   to show a seam. The bands stop well clear of the mark, which occupies
+   13%-84% across and 14%-65% down the frame.
+
+   Paint order: surface fill < logo plate < blueprint layer < copy. It lives
+   here rather than in utilities so the whole ladder is legible in one place,
+   and because the .blueprint-layer rule above is unlayered CSS that a Tailwind
+   z-index utility would not override.                                       */
+.hero-sheet > .blueprint-layer { z-index: 1; }
+.hero-sheet .hero-copy { z-index: 2; }
+.hero-plate { position: relative; z-index: 0; }
+.hero-plate::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--brand-blue), transparent 8%, transparent 92%, var(--brand-blue)),
+    linear-gradient(to bottom, var(--brand-blue), transparent 10%, transparent 90%, var(--brand-blue));
 }
 
 @media (prefers-reduced-transparency: reduce) {
