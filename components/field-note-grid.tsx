@@ -1,5 +1,4 @@
-import Image from 'next/image'
-
+import { SiteImage } from '@/components/site-image'
 import type { FieldNote } from '@/lib/site'
 
 /* Mixed grid: photographs where there is photography, written notes where
@@ -11,10 +10,9 @@ export function FieldNoteGrid({ items }: { items: FieldNote[] }) {
     <div className="grid auto-rows-[220px] gap-3 md:auto-rows-[260px] md:grid-cols-3">
       {items.map((item, index) =>
         item.kind === 'image' ? (
-          <figure key={item.src} className={`relative overflow-hidden bg-muted ${item.className ?? ''}`}>
-            <Image
-              src={item.src}
-              alt={item.alt}
+          <figure key={item.image} className={`relative overflow-hidden bg-muted ${item.className ?? ''}`}>
+            <SiteImage
+              id={item.image}
               fill
               className="object-cover grayscale transition-all duration-500 hover:scale-105 hover:grayscale-0"
               sizes="(max-width: 768px) 100vw, 33vw"

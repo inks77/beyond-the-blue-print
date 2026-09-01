@@ -2,6 +2,8 @@
    the nav, the footer, the four programmes, and the field-note archive. Pages
    import from here so a copy change lands everywhere at once. */
 
+import type { SiteImageId } from '@/lib/images'
+
 export const site = {
   name: 'Beyond the Blue Print',
   tagline: 'A business hub for the bold',
@@ -159,21 +161,19 @@ export const impactStats = [
 export const partners: { name: string; href?: string }[] = []
 
 export type FieldNote =
-  | { kind: 'image'; src: string; alt: string; tag: string; className?: string }
+  | { kind: 'image'; image: SiteImageId; tag: string; className?: string }
   | { kind: 'note'; tag: string; title: string; copy: string; tone?: 'accent' | 'blue' }
 
 export const fieldNotes: FieldNote[] = [
   {
     kind: 'image',
-    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Audience gathered at a conference',
+    image: 'room-audience',
     tag: 'The room',
     className: 'md:col-span-2 md:row-span-2',
   },
   {
     kind: 'image',
-    src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85',
-    alt: 'Team collaborating around a table',
+    image: 'on-ground-team',
     tag: 'On ground',
   },
   {
@@ -185,8 +185,7 @@ export const fieldNotes: FieldNote[] = [
   },
   {
     kind: 'image',
-    src: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=900&q=85',
-    alt: 'Speaker addressing a business audience',
+    image: 'main-stage-speaker',
     tag: 'Main stage',
   },
   {
@@ -198,8 +197,7 @@ export const fieldNotes: FieldNote[] = [
   },
   {
     kind: 'image',
-    src: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Conference audience listening to a speaker',
+    image: 'ideas-in-motion',
     tag: 'Ideas in motion',
   },
 ]

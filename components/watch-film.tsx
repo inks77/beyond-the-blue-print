@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react'
 import { Play } from 'lucide-react'
 
+import { getImage, getVideo } from '@/lib/images'
+
 export function WatchFilm() {
   const watchVideo = useRef<HTMLVideoElement>(null)
 
@@ -61,9 +63,9 @@ export function WatchFilm() {
             controls
             playsInline
             preload="metadata"
-            poster="/santina-poster.jpg"
+            poster={getImage(getVideo('santina-film').poster).src}
           >
-            <source src="/santina-web.mp4" type="video/mp4" />
+            <source src={getVideo('santina-film').src} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

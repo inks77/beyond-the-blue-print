@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
 import { ContactBlock } from '@/components/contact-block'
 import { PageHero } from '@/components/page-hero'
 import { SiteHeader } from '@/components/site-header'
+import { SiteImage } from '@/components/site-image'
 import { registerHref } from '@/lib/registration'
 import { programBySlug } from '@/lib/site'
 
@@ -73,9 +73,8 @@ export default function ConferencePage() {
 
         <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 md:grid-cols-2 md:px-8 md:pb-28 lg:px-10">
           <div className="relative min-h-96 bg-muted">
-            <Image
-              src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85"
-              alt="Audience gathered at a conference"
+            <SiteImage
+              id="room-audience"
               fill
               className="object-cover grayscale mix-blend-multiply"
               sizes="(max-width: 768px) 100vw, 50vw"

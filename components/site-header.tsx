@@ -1,10 +1,10 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 
+import { SiteImage } from '@/components/site-image'
 import { registerHref } from '@/lib/registration'
 import { navLinks } from '@/lib/site'
 
@@ -39,7 +39,7 @@ export function SiteHeader({ children }: { children?: React.ReactNode }) {
         aria-label="Main navigation"
       >
         <Link href="/" className="flex items-center gap-3 text-left" aria-label="Beyond the Blue Print home">
-          <Image src="/logo-mark.png" alt="" width={512} height={512} priority className="size-10 object-contain" />
+          <SiteImage id="logo-mark" priority className="size-10 object-contain" />
           <span className="max-w-28 text-xs font-semibold uppercase leading-tight tracking-[0.14em]">
             Beyond the
             <br />
