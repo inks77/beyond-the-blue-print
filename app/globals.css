@@ -55,6 +55,15 @@
   --input: oklch(0.78 0.025 90);
   --ring: var(--brand-blue);
   --radius: 0rem;
+  /* Focus indicator. WCAG 1.4.11/2.4.11 wants 3:1 against whatever the ring
+     is drawn on, and --accent itself only manages 2.00:1 on --background.
+     This is the same accent hue and chroma dropped in lightness until it
+     clears 3:1 on both light surfaces the ring can land on: --background
+     (6.94:1) and --accent (3.47:1). It cannot also clear 3:1 on the blue
+     sheet -- darkening trades one surface for the other -- so the blue
+     surfaces re-point this token at --accent below, where it measures
+     3.80:1. No new hue is introduced either way.                          */
+  --focus-ring: oklch(0.46 0.16 48);
 }
 
 * { @apply border-border; }
@@ -114,6 +123,8 @@ body > * { position: relative; z-index: 1; }
 .blueprint-invert {
   --bp-line: rgba(255, 255, 255, 0.077);
   --bp-line-strong: rgba(255, 255, 255, 0.22);
+  /* On the blue sheet the undarkened accent is the readable ring (3.80:1). */
+  --focus-ring: var(--accent);
 }
 .blueprint-on-accent {
   --bp-line: color-mix(in srgb, var(--accent-foreground) 8%, transparent);
@@ -158,6 +169,6 @@ body > * { position: relative; z-index: 1; }
 /* ------------------------------------------------------------------------ */
 
 ::selection { background: var(--accent); color: var(--accent-foreground); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
 .eyebrow { @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
