@@ -5,6 +5,8 @@ import { ArrowUpRight } from 'lucide-react'
 
 import { PageHero } from '@/components/page-hero'
 import { SiteHeader } from '@/components/site-header'
+import { SiteImage } from '@/components/site-image'
+import { getImage } from '@/lib/images'
 import { registerHref } from '@/lib/registration'
 import { programBySlug, programHref, programs } from '@/lib/site'
 
@@ -46,6 +48,18 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
             <div className="mt-10 flex items-center gap-3 font-mono text-xs uppercase">
               <span className="h-px w-10 bg-accent" /> {program.label}
             </div>
+            {program.image ? (
+              <figure className="mx-auto mt-10 w-full max-w-xs md:mx-0 md:mt-14 md:max-w-none">
+                <SiteImage
+                  id={program.image}
+                  className="h-auto w-full border border-border"
+                  sizes="(max-width: 768px) 20rem, 33vw"
+                />
+                <figcaption className="mt-3 font-mono text-xs uppercase text-muted-foreground">
+                  {getImage(program.image).credit}
+                </figcaption>
+              </figure>
+            ) : null}
           </div>
           <p className="max-w-2xl text-pretty text-xl leading-8">{program.intro}</p>
         </section>

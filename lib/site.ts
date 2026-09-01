@@ -46,6 +46,10 @@ export type Program = {
   audience: string[]
   detail: { title: string; copy: string }[]
   cta: string
+  /* A picture from the image database for the programme's own page. Optional:
+     a programme we have not photographed yet simply leaves the column to the
+     label, rather than standing in a placeholder. */
+  image?: SiteImageId
   /* A programme big enough to earn a top-level route sets it here; everything
      else is served by /programs/[slug]. programHref() is the only thing that
      should build a programme link, so the two never diverge. */
@@ -94,6 +98,7 @@ export const programs: Program[] = [
       { title: 'Leave something behind', copy: 'A written read on the business and a short list of moves, in plain language.' },
     ],
     cta: 'Book a session',
+    image: 'nile-transformers',
   },
   {
     slug: 'the-show',

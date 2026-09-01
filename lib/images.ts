@@ -138,6 +138,15 @@ const records = {
     credit: 'Santina — Beyond the Blue Print Uganda',
     status: 'ready',
   },
+  'nile-transformers': {
+    id: 'nile-transformers',
+    src: '/nile-transformers.jpg',
+    alt: 'Two people in hard hats standing either side of the Nile Transformers sign — "Empowering the nation" — outside the factory in Kampala',
+    width: 3024,
+    height: 4032,
+    credit: 'Nile Transformers, Kampala — an On Ground visit',
+    status: 'ready',
+  },
   'room-audience': {
     id: 'room-audience',
     src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85',
