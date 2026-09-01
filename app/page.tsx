@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
@@ -9,7 +8,9 @@ import { ImpactBand } from '@/components/impact-band'
 import { PartnerStrip } from '@/components/partner-strip'
 import { ProgramsExplorer } from '@/components/programs-explorer'
 import { SiteHeader } from '@/components/site-header'
+import { SiteImage } from '@/components/site-image'
 import { WatchFilm } from '@/components/watch-film'
+import { getImage } from '@/lib/images'
 import { fieldNotes } from '@/lib/site'
 
 export default function Page() {
@@ -27,16 +28,13 @@ export default function Page() {
               <span className="h-px w-10 bg-accent" /> No blueprint is final
             </div>
             <figure className="mx-auto mt-10 w-full max-w-xs md:mx-0 md:mt-14 md:max-w-none">
-              <Image
-                src="/panel-dr-ian-clarke.jpg"
-                alt="Dr Ian Clarke, Founder and CEO of Clarke Group, in conversation on stage at Beyond the Blue Print Uganda"
-                width={1333}
-                height={2000}
+              <SiteImage
+                id="panel-dr-ian-clarke"
                 className="h-auto w-full border border-border"
                 sizes="(max-width: 768px) 20rem, 33vw"
               />
               <figcaption className="mt-3 font-mono text-xs uppercase text-muted-foreground">
-                Dr Ian Clarke / Clarke Group — on stage in Kampala
+                {getImage('panel-dr-ian-clarke').credit}
               </figcaption>
             </figure>
           </div>
@@ -80,9 +78,8 @@ export default function Page() {
             </Link>
           </div>
           <div className="relative min-h-96 bg-muted">
-            <Image
-              src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=85"
-              alt="Conference audience listening to a speaker"
+            <SiteImage
+              id="ideas-in-motion"
               fill
               className="object-cover grayscale mix-blend-multiply"
               sizes="(max-width: 768px) 100vw, 50vw"

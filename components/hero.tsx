@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
+import { getImage, getVideo } from '@/lib/images'
 import { site } from '@/lib/site'
 
 export function Hero() {
@@ -48,10 +49,10 @@ export function Hero() {
             loop
             playsInline
             preload="metadata"
-            poster="/btb-logo-poster.png"
+            poster={getImage(getVideo('hero-logo').poster).src}
             aria-hidden="true"
           >
-            <source src="/btb-logo.mp4" type="video/mp4" />
+            <source src={getVideo('hero-logo').src} type="video/mp4" />
           </video>
         </div>
         <div className="hero-copy relative mt-10 flex flex-col justify-between gap-7 border-t border-primary-foreground/30 pt-5 md:flex-row md:items-end">

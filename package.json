@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "prebuild": "node scripts/check-images.mjs",
+    "start": "next start",
+    "check:images": "node scripts/check-images.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

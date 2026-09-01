@@ -24,6 +24,38 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Images
+
+Every picture and video on the site is declared once in `lib/images.ts` -- the
+image database. Components ask for it by id and never type a path:
+
+```tsx
+<SiteImage id="panel-dr-ian-clarke" className="h-auto w-full" sizes="33vw" />
+```
+
+The id is a TypeScript union, so a name that is not in the database will not
+compile. To add a picture:
+
+1. Put the file in `public/`.
+2. Add an entry to `lib/images.ts` with its alt text and its real pixel size.
+3. Render it with `<SiteImage id="..." />`.
+
+`pnpm check:images` -- which `pnpm build` runs first, so it also guards every
+Vercel deploy -- then checks the database against `public/` and **fails the
+build** if an image is referenced but missing, or if the declared width and
+height do not match the file. That is what stops a picture from shipping as a
+broken frame: the deploy stops instead.
+
+If the entry has to go in before the file does, mark it `status: 'pending'` and
+say what is missing in `awaiting`. The build stays green, the page draws a
+labelled placeholder at the right aspect ratio rather than a broken image, and
+`check:images` prints the file that is still outstanding on every run -- then
+tells you to flip the status the moment the file appears in `public/`.
+
+**Currently pending:** `public/panel-dr-ian-clarke.jpg` (the Dr Ian Clarke stage
+photograph, 1333x2000). Add the file and change that entry's `status` to
+`'ready'` and the placeholder in the "Why we exist" section becomes the photo.
+
 ## Registration
 
 Every "register / propose / partner / book / pitch / join" button on the site
