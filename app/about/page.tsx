@@ -5,6 +5,8 @@ import { ArrowUpRight } from 'lucide-react'
 import { ImpactBand } from '@/components/impact-band'
 import { PageHero } from '@/components/page-hero'
 import { SiteHeader } from '@/components/site-header'
+import { SiteImage } from '@/components/site-image'
+import { getImage } from '@/lib/images'
 import { registerHref } from '@/lib/registration'
 import { programHref, programs } from '@/lib/site'
 
@@ -56,6 +58,16 @@ export default function AboutPage() {
             <div className="mt-10 flex items-center gap-3 font-mono text-xs uppercase">
               <span className="h-px w-10 bg-accent" /> No blueprint is final
             </div>
+            <figure className="mx-auto mt-10 w-full max-w-xs md:mx-0 md:mt-14 md:max-w-none">
+              <SiteImage
+                id="santina-btbp"
+                className="h-auto w-full border border-border"
+                sizes="(max-width: 768px) 20rem, 33vw"
+              />
+              <figcaption className="mt-3 font-mono text-xs uppercase text-muted-foreground">
+                {getImage('santina-btbp').credit}
+              </figcaption>
+            </figure>
           </div>
           <div className="max-w-2xl space-y-6 text-lg leading-7 text-muted-foreground">
             <p>

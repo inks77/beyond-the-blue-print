@@ -129,6 +129,15 @@ const records = {
     credit: 'Dr Ian Clarke / Clarke Group — on stage in Kampala',
     status: 'ready',
   },
+  'santina-btbp': {
+    id: 'santina-btbp',
+    src: '/santina-btbp.jpg',
+    alt: 'Santina, arms folded in a white blazer, in front of the Beyond the Blue Print Uganda brand board',
+    width: 1170,
+    height: 1133,
+    credit: 'Santina — Beyond the Blue Print Uganda',
+    status: 'ready',
+  },
   'room-audience': {
     id: 'room-audience',
     src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85',
