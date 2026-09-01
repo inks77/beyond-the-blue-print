@@ -45,7 +45,7 @@ export default function Page() {
       </nav>
       {menuOpen && <div className="mx-5 flex flex-col gap-5 border-y border-border py-5 text-sm font-semibold uppercase tracking-[0.12em] md:hidden"><button onClick={() => scrollTo('programs')}>What we do</button><button onClick={() => scrollTo('story')}>Our story</button><button onClick={() => scrollTo('contact')}>Partner with us</button></div>}
 
-      <section id="top" className="blueprint-grid relative mx-3 mt-2 grid min-h-[620px] items-end overflow-hidden bg-primary px-6 pb-8 pt-24 text-primary-foreground md:mx-5 md:min-h-[650px] md:px-12 md:pb-12 lg:mx-8 lg:px-16">
+      <section id="top" className="relative mx-3 mt-2 grid min-h-[620px] items-end overflow-hidden bg-primary px-6 pb-8 pt-24 text-primary-foreground md:mx-5 md:min-h-[650px] md:px-12 md:pb-12 lg:mx-8 lg:px-16">
         <div className="relative z-10 max-w-5xl">
           <p className="mb-7 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-primary-foreground/70"><span className="size-2 bg-accent" /> A business hub for the bold</p>
           <h1 className="max-w-5xl text-balance font-sans text-[clamp(3.5rem,10vw,9.5rem)] font-black uppercase leading-[0.82] tracking-[-0.07em]">Beyond<br /><span className="text-accent">the blue</span><br />print.</h1>
