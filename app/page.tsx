@@ -48,51 +48,54 @@ export default function Page() {
 
   return (
     <main className="min-h-screen overflow-hidden text-foreground">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 md:px-8 lg:px-10" aria-label="Main navigation">
-        <button onClick={() => scrollTo('top')} className="flex items-center gap-3 text-left" aria-label="Beyond the Blue Print home">
-          <Image src="/logo-mark.png" alt="" width={512} height={512} priority className="size-10 object-contain" />
-          <span className="max-w-28 text-xs font-semibold uppercase leading-tight tracking-[0.14em]">Beyond the<br />Blue Print</span>
-        </button>
-        <div className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] md:flex">
-          <button onClick={() => scrollTo('programs')} className="transition-colors hover:text-primary">What we do</button>
-          <button onClick={() => scrollTo('story')} className="transition-colors hover:text-primary">Our story</button>
-          <button onClick={() => scrollTo('contact')} className="transition-colors hover:text-primary">Partner with us</button>
-        </div>
-        <button className="hidden items-center gap-2 border border-foreground px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:bg-primary hover:text-primary-foreground md:flex" onClick={() => scrollTo('contact')}>Join the hub <ArrowUpRight className="size-4" /></button>
-        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button>
-      </nav>
-      {menuOpen && <div className="mx-5 flex flex-col gap-5 border-y border-border py-5 text-sm font-semibold uppercase tracking-[0.12em] md:hidden"><button onClick={() => scrollTo('programs')}>What we do</button><button onClick={() => scrollTo('story')}>Our story</button><button onClick={() => scrollTo('contact')}>Partner with us</button></div>}
-
-      <section id="top" className="hero-sheet blueprint-surface blueprint-invert relative mx-3 mt-2 grid min-h-[620px] items-end overflow-hidden bg-primary px-6 pb-8 pt-24 text-primary-foreground md:mx-5 md:min-h-[650px] md:px-12 md:pb-12 lg:mx-8 lg:px-16">
+      <header id="top" className="hero-sheet blueprint-surface blueprint-invert relative w-full overflow-hidden bg-primary text-primary-foreground">
         <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
-        <div className="max-w-5xl">
-          <p className="hero-copy relative mb-7 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-primary-foreground/70"><span className="size-2 bg-accent" /> A business hub for the bold</p>
-          <h1 className="sr-only">Beyond the Blue Print Uganda — a business hub for the bold</h1>
-          <div className="hero-plate w-full max-w-xl md:max-w-2xl lg:max-w-4xl">
-            <video
-              ref={heroVideo}
-              className="block aspect-video w-full rounded-none border-0 bg-brand-blue object-cover shadow-none"
-              width={1280}
-              height={720}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/btb-logo-poster.png"
-              aria-label="Beyond the Blue Print Uganda"
-            >
-              <source src="/btb-logo.mp4" type="video/mp4" />
-              <Image src="/logo-full.png" alt="Beyond the Blue Print Uganda" width={1200} height={410} className="h-auto w-full" />
-            </video>
+
+        <nav className="hero-copy relative mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 md:px-8 lg:px-10" aria-label="Main navigation">
+          <button onClick={() => scrollTo('top')} className="flex items-center gap-3 text-left" aria-label="Beyond the Blue Print home">
+            <Image src="/logo-mark.png" alt="" width={512} height={512} priority className="size-10 object-contain" />
+            <span className="max-w-28 text-xs font-semibold uppercase leading-tight tracking-[0.14em]">Beyond the<br />Blue Print</span>
+          </button>
+          <div className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] md:flex">
+            <button onClick={() => scrollTo('programs')} className="transition-colors hover:text-accent">What we do</button>
+            <button onClick={() => scrollTo('story')} className="transition-colors hover:text-accent">Our story</button>
+            <button onClick={() => scrollTo('contact')} className="transition-colors hover:text-accent">Partner with us</button>
           </div>
-          <div className="hero-copy relative mt-10 flex flex-col justify-between gap-7 border-t border-primary-foreground/30 pt-5 md:flex-row md:items-end">
-            <p className="max-w-md text-pretty text-base leading-6 text-primary-foreground/80 md:text-lg">We connect young entrepreneurs, investors, and established businesses to the people and ideas shaping what comes next.</p>
-            <button onClick={() => scrollTo('programs')} className="flex w-fit items-center gap-3 bg-accent px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground transition-transform hover:-translate-y-1">Explore the hub <ArrowUpRight className="size-4" /></button>
+          <button className="hidden items-center gap-2 border border-primary-foreground/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground md:flex" onClick={() => scrollTo('contact')}>Join the hub <ArrowUpRight className="size-4" /></button>
+          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button>
+        </nav>
+        {menuOpen && <div className="hero-copy relative mx-auto flex w-full max-w-7xl flex-col gap-5 border-y border-primary-foreground/30 px-5 py-5 text-sm font-semibold uppercase tracking-[0.12em] md:hidden"><button onClick={() => scrollTo('programs')} className="text-left">What we do</button><button onClick={() => scrollTo('story')} className="text-left">Our story</button><button onClick={() => scrollTo('contact')} className="text-left">Partner with us</button></div>}
+
+        <div className="relative mx-auto grid w-full min-h-[560px] max-w-7xl items-end px-5 pb-8 pt-16 md:min-h-[600px] md:px-8 md:pb-12 lg:px-10">
+          <div className="max-w-5xl">
+            <p className="hero-copy relative mb-7 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.22em] text-primary-foreground/70"><span className="size-2 bg-accent" /> A business hub for the bold</p>
+            <h1 className="sr-only">Beyond the Blue Print Uganda — a business hub for the bold</h1>
+            <div className="hero-plate w-full max-w-xl md:max-w-2xl lg:max-w-4xl">
+              <video
+                ref={heroVideo}
+                className="block aspect-video w-full rounded-none border-0 bg-brand-blue object-cover shadow-none"
+                width={1280}
+                height={720}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/btb-logo-poster.png"
+                aria-label="Beyond the Blue Print Uganda"
+              >
+                <source src="/btb-logo.mp4" type="video/mp4" />
+                <Image src="/logo-full.png" alt="Beyond the Blue Print Uganda" width={1200} height={410} className="h-auto w-full" />
+              </video>
+            </div>
+            <div className="hero-copy relative mt-10 flex flex-col justify-between gap-7 border-t border-primary-foreground/30 pt-5 md:flex-row md:items-end">
+              <p className="max-w-md text-pretty text-base leading-6 text-primary-foreground/80 md:text-lg">We connect young entrepreneurs, investors, and established businesses to the people and ideas shaping what comes next.</p>
+              <button onClick={() => scrollTo('programs')} className="flex w-fit items-center gap-3 bg-accent px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground transition-transform hover:-translate-y-1">Explore the hub <ArrowUpRight className="size-4" /></button>
+            </div>
           </div>
+          <div className="hero-copy absolute bottom-8 right-5 hidden font-mono text-right text-[10px] uppercase tracking-[0.2em] text-primary-foreground/50 md:right-8 md:block lg:right-10">Kampala / Uganda<br />Building in public</div>
         </div>
-        <div className="hero-copy absolute bottom-8 right-8 hidden font-mono text-right text-[10px] uppercase tracking-[0.2em] text-primary-foreground/50 md:block">Kampala / Uganda<br />Building in public</div>
-      </section>
+      </header>
 
       <section className="mx-auto grid max-w-7xl gap-10 px-5 py-20 md:grid-cols-[1fr_2fr] md:px-8 md:py-28 lg:px-10" id="story">
         <div><p className="eyebrow">Why we exist</p><div className="mt-10 flex items-center gap-3 font-mono text-xs uppercase"><span className="h-px w-10 bg-accent" /> No blueprint is final</div></div>
