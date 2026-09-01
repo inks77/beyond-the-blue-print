@@ -5,6 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { ImpactBand } from '@/components/impact-band'
 import { PageHero } from '@/components/page-hero'
 import { SiteHeader } from '@/components/site-header'
+import { registerHref } from '@/lib/registration'
 import { programHref, programs } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -124,7 +125,7 @@ export default function AboutPage() {
             If any of this sounds like the room you have been looking for.
           </h2>
           <Link
-            href="/#contact"
+            href={registerHref()}
             className="flex w-fit shrink-0 items-center gap-3 bg-accent px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground"
           >
             Join the hub <ArrowUpRight className="size-4" />

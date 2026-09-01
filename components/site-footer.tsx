@@ -2,13 +2,17 @@ import Link from 'next/link'
 
 import { NewsletterForm } from '@/components/newsletter-form'
 import { SocialLinks } from '@/components/social-links'
+import { registerHref } from '@/lib/registration'
 import { navLinks, programHref, programs, site } from '@/lib/site'
 
+/* Every one of these opens the registration form with its own capacity already
+   chosen; see lib/registration.ts. */
 const getInvolved = [
-  { href: '/#contact', label: 'Join the hub' },
-  { href: '/#contact', label: 'Partner with us' },
-  { href: '/programs/mentorship', label: 'Find a mentor' },
-  { href: '/conference', label: 'Speak at the conference' },
+  { href: registerHref(), label: 'Join the hub' },
+  { href: registerHref('partner'), label: 'Partner with us' },
+  { href: registerHref('mentorship'), label: 'Find a mentor' },
+  { href: registerHref('speaker'), label: 'Speak at the conference' },
+  { href: registerHref('guest'), label: 'Attend the conference' },
 ]
 
 /* The strip below the columns carries the social accounts; a contact address

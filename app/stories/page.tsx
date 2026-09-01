@@ -5,6 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { FieldNoteGrid } from '@/components/field-note-grid'
 import { PageHero } from '@/components/page-hero'
 import { SiteHeader } from '@/components/site-header'
+import { registerHref } from '@/lib/registration'
 import { fieldNotes } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -38,7 +39,7 @@ export default function StoriesPage() {
               </h2>
             </div>
             <Link
-              href="/#contact"
+              href={registerHref('the-show')}
               className="flex w-fit shrink-0 items-center gap-3 bg-primary px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-primary-foreground"
             >
               Tell us about it <ArrowUpRight className="size-4" />

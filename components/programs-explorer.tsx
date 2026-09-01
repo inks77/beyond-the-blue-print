@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 
+import { registerHref } from '@/lib/registration'
 import { programHref, programs } from '@/lib/site'
 
 /* Four toggle buttons over one shared panel. They are `aria-pressed` buttons
@@ -75,10 +76,10 @@ export function ProgramsExplorer() {
                 Open {active.label} <ArrowUpRight className="size-4" />
               </Link>
               <Link
-                href="/#contact"
+                href={registerHref(active.slug)}
                 className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-primary-foreground/70"
               >
-                Get involved <ArrowUpRight className="size-4" />
+                Register for {active.label} <ArrowUpRight className="size-4" />
               </Link>
             </div>
           </div>

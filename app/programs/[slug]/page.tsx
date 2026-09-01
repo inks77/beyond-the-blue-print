@@ -5,6 +5,7 @@ import { ArrowUpRight } from 'lucide-react'
 
 import { PageHero } from '@/components/page-hero'
 import { SiteHeader } from '@/components/site-header'
+import { registerHref } from '@/lib/registration'
 import { programBySlug, programHref, programs } from '@/lib/site'
 
 export function generateStaticParams() {
@@ -84,7 +85,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
               {program.cta}.
             </h2>
             <Link
-              href="/#contact"
+              href={registerHref(program.slug)}
               className="flex w-fit items-center gap-3 bg-accent-foreground px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-accent"
             >
               {program.cta} <ArrowUpRight className="size-4" />

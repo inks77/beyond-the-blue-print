@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 
+import { registerHref } from '@/lib/registration'
 import { navLinks } from '@/lib/site'
 
 /* The nav and the blue sheet it sits on are one element, so a page can hand in
@@ -59,7 +60,7 @@ export function SiteHeader({ children }: { children?: React.ReactNode }) {
         </div>
 
         <Link
-          href="/#contact"
+          href={registerHref()}
           className="hidden items-center gap-2 border border-primary-foreground/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground lg:flex"
         >
           Join the hub <ArrowUpRight className="size-4" />
@@ -89,7 +90,7 @@ export function SiteHeader({ children }: { children?: React.ReactNode }) {
               {link.label}
             </Link>
           ))}
-          <Link href="/#contact" className="flex items-center gap-2 text-accent" onClick={() => setMenuOpen(false)}>
+          <Link href={registerHref()} className="flex items-center gap-2 text-accent" onClick={() => setMenuOpen(false)}>
             Join the hub <ArrowUpRight className="size-4" />
           </Link>
         </div>

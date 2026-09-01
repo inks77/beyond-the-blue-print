@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
+import { registerHref } from '@/lib/registration'
 import { partners } from '@/lib/site'
 
 /* Until there is a signed partner to name, this renders the ask rather than a
@@ -31,7 +32,7 @@ export function PartnerStrip() {
               This is where the names of the people building it with us will go.
             </h2>
             <Link
-              href="/#contact"
+              href={registerHref('partner')}
               className="flex w-fit shrink-0 items-center gap-3 bg-primary px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-primary-foreground"
             >
               Partner with us <ArrowUpRight className="size-4" />
