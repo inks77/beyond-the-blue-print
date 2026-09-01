@@ -10,6 +10,21 @@ export const site = {
     'We connect young entrepreneurs, investors, and established businesses to the people and ideas shaping what comes next.',
 }
 
+/* Social accounts, in the order they appear in the footer. An entry lives here
+   only once the account is real and its URL has been checked -- SocialLinks
+   renders exactly what is in this list, so an account we do not yet run simply
+   stays out of it rather than shipping a logo that leads nowhere. */
+export type SocialPlatform = 'instagram' | 'facebook' | 'x'
+
+export const socials: { platform: SocialPlatform; label: string; handle: string; href: string }[] = [
+  {
+    platform: 'instagram',
+    label: 'Instagram',
+    handle: '@beyondtheblueprint_ug',
+    href: 'https://www.instagram.com/beyondtheblueprint_ug/',
+  },
+]
+
 export const navLinks = [
   { href: '/programs', label: 'What we do' },
   { href: '/conference', label: 'The conference' },

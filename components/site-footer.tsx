@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { NewsletterForm } from '@/components/newsletter-form'
+import { SocialLinks } from '@/components/social-links'
 import { navLinks, programHref, programs, site } from '@/lib/site'
 
 const getInvolved = [
@@ -10,9 +11,10 @@ const getInvolved = [
   { href: '/conference', label: 'Speak at the conference' },
 ]
 
-/* TODO: social handles and a contact address go in the strip below the columns
-   once they exist. A footer link that goes nowhere is worse than a footer
-   without one, so nothing is stubbed out here in the meantime. */
+/* The strip below the columns carries the social accounts; a contact address
+   still belongs there once one exists. A footer link that goes nowhere is worse
+   than a footer without one, so the accounts come from lib/site.ts and nothing
+   is stubbed out in the meantime. */
 export function SiteFooter() {
   return (
     <footer className="border-t border-border">
@@ -54,10 +56,15 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 border-t border-border px-5 py-6 text-xs uppercase tracking-[0.12em] md:flex-row md:items-center md:justify-between md:px-8 lg:px-10">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-border px-5 py-6 text-xs uppercase tracking-[0.12em] md:flex-row md:items-center md:justify-between md:px-8 lg:px-10">
         <span className="font-bold">Beyond the Blue Print</span>
         <span className="text-muted-foreground">{site.tagline} — {site.place}</span>
-        <span className="font-mono text-muted-foreground">© 2026 BTB</span>
+        {/* -ml-2 pulls the first icon's 36px box back to the text margin so the
+            row still starts on the grid the rest of the strip sits on. */}
+        <div className="flex items-center gap-5 md:gap-6">
+          <SocialLinks className="-ml-2 md:ml-0" />
+          <span className="font-mono text-muted-foreground">© 2026 BTB</span>
+        </div>
       </div>
     </footer>
   )
