@@ -23,6 +23,7 @@ export default function Page() {
   const [submitted, setSubmitted] = useState(false)
   const active = programs.find((program) => program.id === activeProgram) ?? programs[0]
   const heroVideo = useRef<HTMLVideoElement>(null)
+  const watchVideo = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -39,6 +40,32 @@ export default function Page() {
     sync()
     media.addEventListener('change', sync)
     return () => media.removeEventListener('change', sync)
+  }, [])
+
+  // The watch film is a 3-minute, ~19 MB download, so it ships as preload="metadata"
+  // and only warms its buffer once the section is close to the viewport — by the time
+  // the play button is pressed the browser is already streaming ahead, and playback
+  // runs to the end without stalling. `preload` is only consulted while the browser
+  // has not started fetching media, so raising it needs a load() to take effect.
+  useEffect(() => {
+    const video = watchVideo.current
+    if (!video) return
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection
+    if (connection?.saveData) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return
+        observer.disconnect()
+        // Re-running the resource selection algorithm mid-playback would seek the
+        // viewer back to the start, so leave a video that is already going alone.
+        if (!video.paused || video.currentTime > 0) return
+        video.preload = 'auto'
+        video.load()
+      },
+      { rootMargin: '400px' },
+    )
+    observer.observe(video)
+    return () => observer.disconnect()
   }, [])
 
   function scrollTo(id: string) {
@@ -135,10 +162,13 @@ export default function Page() {
             </div>
             <div className="mx-auto w-full max-w-xs border border-primary-foreground/20 bg-black md:max-w-sm">
               <video
+                ref={watchVideo}
                 className="aspect-[9/16] w-full object-cover"
+                width={720}
+                height={1280}
                 controls
                 playsInline
-                preload="none"
+                preload="metadata"
                 poster="/santina-poster.jpg"
               >
                 <source src="/santina-web.mp4" type="video/mp4" />
