@@ -68,9 +68,9 @@ export default function Page() {
             <span className="max-w-28 text-xs font-semibold uppercase leading-tight tracking-[0.14em]">Beyond the<br />Blue Print</span>
           </button>
           <div className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.12em] md:flex">
-            <button onClick={() => scrollTo('programs')} className="transition-colors hover:text-accent">What we do</button>
-            <button onClick={() => scrollTo('story')} className="transition-colors hover:text-accent">Our story</button>
-            <button onClick={() => scrollTo('contact')} className="transition-colors hover:text-accent">Partner with us</button>
+            <button onClick={() => scrollTo('programs')} className="underline decoration-transparent decoration-2 underline-offset-4 transition-colors hover:decoration-accent">What we do</button>
+            <button onClick={() => scrollTo('story')} className="underline decoration-transparent decoration-2 underline-offset-4 transition-colors hover:decoration-accent">Our story</button>
+            <button onClick={() => scrollTo('contact')} className="underline decoration-transparent decoration-2 underline-offset-4 transition-colors hover:decoration-accent">Partner with us</button>
           </div>
           <button className="hidden items-center gap-2 border border-primary-foreground/60 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors hover:border-accent hover:bg-accent hover:text-accent-foreground md:flex" onClick={() => scrollTo('contact')}>Join the hub <ArrowUpRight className="size-4" /></button>
           {/* -m-2.5 p-2.5 grows the 24px icon to a 44px target while the negative
@@ -110,7 +110,7 @@ export default function Page() {
               <button onClick={() => scrollTo('programs')} className="flex w-fit items-center gap-3 bg-accent px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground transition-transform hover:-translate-y-1">Explore the hub <ArrowUpRight className="size-4" /></button>
             </div>
           </div>
-          <div className="hero-copy absolute bottom-8 right-5 hidden font-mono text-right text-[10px] uppercase tracking-[0.2em] text-primary-foreground/50 md:right-8 md:block lg:right-10">Kampala / Uganda<br />Building in public</div>
+          <div className="hero-copy absolute bottom-8 right-5 hidden font-mono text-right text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70 md:right-8 md:block lg:right-10">Kampala / Uganda<br />Building in public</div>
         </div>
       </header>
 
