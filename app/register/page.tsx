@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
-import { PageHero } from '@/components/page-hero'
+import { CapacityProvider } from '@/components/register-capacity'
+import { RegisterHero } from '@/components/register-hero'
 import { RegistrationForm } from '@/components/registration-form'
 import { SiteHeader } from '@/components/site-header'
 import { resolveCapacity } from '@/lib/registration'
@@ -33,7 +34,9 @@ const whatHappensNext = [
 
 /* One form for every way in. The capacity comes in on `?as=`, set by whichever
    button was pressed, so the visitor lands with their answer already filled in
-   rather than starting from a blank contact box. */
+   rather than starting from a blank contact box -- and the hero opens on that
+   same capacity. From there the two stay together: the hero and the picker
+   share one piece of state, so changing the card changes the heading. */
 export default async function RegisterPage({
   searchParams,
 }: {
@@ -43,20 +46,15 @@ export default async function RegisterPage({
   const capacity = resolveCapacity(as)
 
   return (
-    <>
+    <CapacityProvider initialCapacity={capacity}>
       <SiteHeader>
-        <PageHero
-          eyebrow="Register"
-          title={`${capacity.title}.`}
-          copy={capacity.copy}
-          meta="One form / Kampala, Uganda — a reply from a person"
-        />
+        <RegisterHero />
       </SiteHeader>
 
       <main id="main">
         <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[2fr_1fr] lg:gap-16">
-            <RegistrationForm initialCapacity={capacity} />
+            <RegistrationForm />
 
             <aside className="lg:pt-2">
               <p className="eyebrow">What happens next</p>
@@ -97,6 +95,6 @@ export default async function RegisterPage({
 
         <div className="h-20 md:h-28" />
       </main>
-    </>
+    </CapacityProvider>
   )
 }

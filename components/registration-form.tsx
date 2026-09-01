@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useActionState, useEffect, useRef, useState } from 'react'
+import { useActionState, useEffect, useRef } from 'react'
 import { ArrowUpRight, Check, Loader2 } from 'lucide-react'
 
 import { submitRegistration, type RegistrationState } from '@/app/register/actions'
-import { capacities, capacityById, type Capacity } from '@/lib/registration'
+import { useCapacity } from '@/components/register-capacity'
+import { capacities, capacityById } from '@/lib/registration'
 
 const initialState: RegistrationState = { status: 'idle' }
 
@@ -15,17 +16,16 @@ const fieldClass =
 /* One form, seven capacities. The capacity arrives from the button the visitor
    pressed (`/register?as=speaker`), so the thing they already told us is
    already answered -- they can still change it here, and the free-text prompt
-   changes with it.
+   and the heading above the form change with it. The selection lives in
+   CapacityProvider because the hero needs it too.
 
    It is a real <form> bound to a server action, so it submits and validates
    with JavaScript off as well as on; the pending state and the live prompt are
    the enhancement, not the mechanism. */
-export function RegistrationForm({ initialCapacity }: { initialCapacity: Capacity }) {
+export function RegistrationForm() {
   const [state, formAction, pending] = useActionState(submitRegistration, initialState)
-  const [selected, setSelected] = useState(initialCapacity.id)
+  const { capacity, selectCapacity } = useCapacity()
   const headingRef = useRef<HTMLDivElement>(null)
-
-  const capacity = capacityById(selected) ?? initialCapacity
   const values = state.values ?? {}
   const errors = state.status === 'error' ? (state.errors ?? {}) : {}
 
@@ -99,8 +99,8 @@ export function RegistrationForm({ initialCapacity }: { initialCapacity: Capacit
                 type="radio"
                 name="capacity"
                 value={option.id}
-                checked={selected === option.id}
-                onChange={() => setSelected(option.id)}
+                checked={capacity.id === option.id}
+                onChange={() => selectCapacity(option.id)}
                 className="sr-only"
               />
               <span className="flex items-start justify-between gap-3">
