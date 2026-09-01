@@ -1,9 +1,14 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+
+import { SiteFooter } from '@/components/site-footer'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'BEYOND THE BLUE PRINT — A business hub for the bold',
+  title: {
+    default: 'BEYOND THE BLUE PRINT — A business hub for the bold',
+    template: '%s — Beyond the Blue Print',
+  },
   description: 'A growing community connecting young entrepreneurs, investors, and established businesses through conferences, mentorship, and business storytelling.',
   generator: 'v0.app',
   icons: {
@@ -41,7 +46,17 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-background">
       <body className="antialiased">
-        {children}
+        {/* One element as the sole body child, on every route: it is what
+            establishes the stacking context that `body > * { z-index: 1 }` in
+            globals.css relies on, and the hero's text antialiasing turns out to
+            be sensitive to losing it. Header and main are supplied per page --
+            the homepage hero and an interior page title sit on the same blue
+            sheet as the nav, so the header cannot be hoisted up here -- while
+            the footer is identical everywhere and lives here. */}
+        <div className="min-h-screen overflow-hidden text-foreground">
+          {children}
+          <SiteFooter />
+        </div>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
