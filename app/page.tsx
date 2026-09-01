@@ -70,7 +70,7 @@ export default function Page() {
           <h1 className="sr-only">Beyond the Blue Print Uganda — a business hub for the bold</h1>
           <video
             ref={heroVideo}
-            className="aspect-video w-full max-w-xl object-contain md:max-w-2xl lg:max-w-4xl"
+            className="block aspect-video w-full max-w-xl rounded-none border-0 bg-brand-blue object-cover shadow-none md:max-w-2xl lg:max-w-4xl"
             width={1280}
             height={720}
             autoPlay
@@ -78,7 +78,7 @@ export default function Page() {
             loop
             playsInline
             preload="auto"
-            poster="/logo-full.png"
+            poster="/btb-logo-poster.png"
             aria-label="Beyond the Blue Print Uganda"
           >
             <source src="/btb-logo.mp4" type="video/mp4" />
