@@ -50,7 +50,73 @@
 
 * { @apply border-border; }
 html { scroll-behavior: smooth; }
-body { @apply bg-background text-foreground; }
+body { @apply bg-background text-foreground; position: relative; }
+
+/* --- Blueprint grid -------------------------------------------------------
+   One continuous drafting sheet behind the whole page. Minor lines every 24px,
+   major lines every 120px. Colours are driven by --bp-line / --bp-line-strong
+   so a section can re-tint the grid without redefining the geometry.        */
+:root {
+  --bp-minor: 24px;
+  --bp-major: 120px;
+  --bp-line: color-mix(in srgb, var(--primary) 8%, transparent);
+  --bp-line-strong: color-mix(in srgb, var(--primary) 14%, transparent);
+}
+
+.blueprint-grid {
+  background-image:
+    repeating-linear-gradient(to right, var(--bp-line-strong) 0 1px, transparent 1px var(--bp-major)),
+    repeating-linear-gradient(to bottom, var(--bp-line-strong) 0 1px, transparent 1px var(--bp-major)),
+    repeating-linear-gradient(to right, var(--bp-line) 0 1px, transparent 1px var(--bp-minor)),
+    repeating-linear-gradient(to bottom, var(--bp-line) 0 1px, transparent 1px var(--bp-minor));
+  background-position: 0 0;
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 100%);
+}
+
+/* Global layer: fixed so it never tiles or scrolls away, and never interactive. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to right, var(--bp-line-strong) 0 1px, transparent 1px var(--bp-major)),
+    repeating-linear-gradient(to bottom, var(--bp-line-strong) 0 1px, transparent 1px var(--bp-major)),
+    repeating-linear-gradient(to right, var(--bp-line) 0 1px, transparent 1px var(--bp-minor)),
+    repeating-linear-gradient(to bottom, var(--bp-line) 0 1px, transparent 1px var(--bp-minor));
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 100%);
+}
+
+body > * { position: relative; z-index: 1; }
+
+/* Coloured surfaces paint their own contained grid on top of their fill. */
+.blueprint-surface { position: relative; overflow: hidden; }
+.blueprint-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.blueprint-invert {
+  --bp-line: color-mix(in srgb, #fff 8%, transparent);
+  --bp-line-strong: color-mix(in srgb, #fff 15%, transparent);
+}
+.blueprint-on-accent {
+  --bp-line: color-mix(in srgb, var(--accent-foreground) 8%, transparent);
+  --bp-line-strong: color-mix(in srgb, var(--accent-foreground) 13%, transparent);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  body::before, .blueprint-layer { display: none; }
+}
+@media print {
+  body::before, .blueprint-layer { display: none !important; }
+}
+/* ------------------------------------------------------------------------ */
+
 ::selection { background: var(--accent); color: var(--accent-foreground); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .eyebrow { @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground; }
