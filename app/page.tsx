@@ -26,6 +26,19 @@ export default function Page() {
             <div className="mt-10 flex items-center gap-3 font-mono text-xs uppercase">
               <span className="h-px w-10 bg-accent" /> No blueprint is final
             </div>
+            <figure className="mx-auto mt-10 w-full max-w-xs md:mx-0 md:mt-14 md:max-w-none">
+              <Image
+                src="/panel-dr-ian-clarke.jpg"
+                alt="Dr Ian Clarke, Founder and CEO of Clarke Group, in conversation on stage at Beyond the Blue Print Uganda"
+                width={1333}
+                height={2000}
+                className="h-auto w-full border border-border"
+                sizes="(max-width: 768px) 20rem, 33vw"
+              />
+              <figcaption className="mt-3 font-mono text-xs uppercase text-muted-foreground">
+                Dr Ian Clarke / Clarke Group — on stage in Kampala
+              </figcaption>
+            </figure>
           </div>
           <div>
             <h2 className="max-w-3xl text-balance text-4xl font-black uppercase leading-[0.95] tracking-[-0.05em] md:text-6xl">
