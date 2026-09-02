@@ -31,11 +31,12 @@ export function ProgramsExplorer() {
         </div>
 
         <div className="grid gap-px border border-border bg-border md:grid-cols-2">
-          {/* The highlighted card is flat blue. A card crops the grid to a few
-              squares, which reads as texture on a small tile rather than as a
-              sheet; the panel below is wide enough to carry the drawing, so it
-              keeps it and the cards point at it. .blueprint-invert stays on the
-              card for the focus ring it retunes for the blue surface. */}
+          {/* The highlighted card is flat blue, and so is the panel it points
+              at: a card crops the grid to a few squares, which reads as texture
+              on a small tile rather than as a sheet, and on the panel the grid
+              sits directly behind the one paragraph of copy this section has.
+              .blueprint-invert stays on both for the focus ring it retunes for
+              the blue surface. */}
           {programs.map((program) => (
             <Link
               key={program.slug}
@@ -64,13 +65,12 @@ export function ProgramsExplorer() {
 
         <div
           id="program-detail"
-          className="blueprint-surface blueprint-invert grid gap-8 border-x border-b border-border bg-primary p-7 text-primary-foreground md:grid-cols-[1fr_2fr] md:p-10"
+          className="blueprint-invert grid gap-8 border-x border-b border-border bg-primary p-7 text-primary-foreground md:grid-cols-[1fr_2fr] md:p-10"
         >
-          <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
-          <p className="relative font-mono text-xs uppercase tracking-[0.15em] text-primary-foreground/60">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary-foreground/60">
             {active.label} / {active.number}
           </p>
-          <div className="relative">
+          <div>
             <p className="max-w-xl text-xl leading-8">{active.copy}</p>
             <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
               <Link
