@@ -178,7 +178,7 @@ export const fieldNotes: FieldNote[] = [
   },
   {
     kind: 'image',
-    image: 'on-ground-team',
+    image: 'table-btbp',
     tag: 'On ground',
   },
   {
