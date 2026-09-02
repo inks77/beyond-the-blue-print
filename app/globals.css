@@ -199,7 +199,9 @@ body > * { position: relative; z-index: 1; }
   );
 }
 
-/* Coloured surfaces paint their own contained grid on top of their fill. */
+/* Coloured surfaces paint their own contained grid on top of their fill. Only
+   the blue ones do: coral is the accent, and it stays flat so it reads as one
+   note against the sheet rather than as more of it. */
 .blueprint-surface { position: relative; overflow: hidden; }
 .blueprint-layer {
   position: absolute;
@@ -214,10 +216,6 @@ body > * { position: relative; z-index: 1; }
   --bp-line-strong: rgba(255, 255, 255, 0.22);
   /* On the blue sheet the undarkened accent is the readable ring (3.80:1). */
   --focus-ring: var(--accent);
-}
-.blueprint-on-accent {
-  --bp-line: color-mix(in srgb, var(--accent-foreground) 8%, transparent);
-  --bp-line-strong: color-mix(in srgb, var(--accent-foreground) 13%, transparent);
 }
 
 /* The plan on a large blue band, paired with .blueprint-layer. The ink is white

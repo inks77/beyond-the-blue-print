@@ -31,11 +31,16 @@ export function FieldNoteGrid({ items }: { items: FieldNote[] }) {
         ) : (
           <blockquote
             key={`${item.tag}-${index}`}
-            className={`blueprint-surface relative flex flex-col justify-between p-6 ${
-              item.tone === 'blue' ? 'blueprint-invert bg-primary text-primary-foreground' : 'blueprint-on-accent bg-accent text-accent-foreground'
+            className={`relative flex flex-col justify-between p-6 ${
+              item.tone === 'blue'
+                ? 'blueprint-surface blueprint-invert bg-primary text-primary-foreground'
+                : 'bg-accent text-accent-foreground'
             }`}
           >
-            <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+            {/* The grid belongs to the blue sheet. Coral is the one flat
+                surface on the site -- it is the accent, and an accent that
+                also carries texture stops reading as a single note. */}
+            {item.tone === 'blue' ? <div className="blueprint-layer blueprint-grid" aria-hidden="true" /> : null}
             <p className="relative font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">{item.tag}</p>
             <div className="relative">
               <p className="text-xl font-black uppercase leading-[1.05] tracking-[-0.03em]">{item.title}</p>
