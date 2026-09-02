@@ -46,7 +46,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#154e91',
+  /* The one place --brand-blue has to be written out: the browser reads this
+     from the document metadata before any stylesheet is applied, so it cannot
+     be a var(). Keep it in step with --brand-blue in app/globals.css. */
+  themeColor: '#154e91', // design-lint-disable: metadata cannot reference a CSS token
 }
 
 export default function RootLayout({

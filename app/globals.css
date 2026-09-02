@@ -2,6 +2,17 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
+/* Tailwind v4 detects its sources automatically, and that sweep reaches the
+   design skills in .claude/ -- documentation that quotes class names in order
+   to argue against them. Every `hover:scale-105` written there as an example of
+   what not to ship was being compiled into real CSS and served to visitors.
+   The skills are prose about the design, not part of it, and neither is any
+   other markdown here -- there is no MDX in this project, so no .md file is
+   ever a legitimate source of a class name. Both are excluded from the scan.
+   This is worth 34kB of the served stylesheet. */
+@source not "../.claude";
+@source not "../**/*.md";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

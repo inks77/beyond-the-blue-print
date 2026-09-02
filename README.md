@@ -98,6 +98,36 @@ If the endpoint is unreachable or returns an error, the visitor is told the
 submission failed rather than shown a confirmation, and the full entry is
 written to the server log so nothing is lost.
 
+## Design standards
+
+The look of this site is held by four skills in `.claude/skills/`, and by one
+advisory check. They exist because the recognisable failure of an AI-built
+frontend is not ugliness but *averageness* -- the median of every landing page
+ever made.
+
+| Skill | Job |
+| --- | --- |
+| `frontend-design` | Type, space, colour, composition, and the house rules of this codebase |
+| `motion` | Animation and interaction craft: fast, interruptible, transform-only |
+| `impeccable` | The finishing pass -- every state, width, input modality, and failure |
+| `taste` | The critique pass, and the catalogue of tells to remove |
+
+`CLAUDE.md` routes to them. Each has a `references/` directory with the depth.
+
+```bash
+pnpm check:design   # advisory -- the mechanical tells a regex can see
+```
+
+`check:design` flags gradient cliches, `transition-all`, `duration-300` sprawl,
+`hover:scale-105`, emoji used as icons, marketing copy, invented metrics, raw
+hex outside the token system, border-plus-shadow double treatments, and stock
+photography standing in for pictures of the real thing. It does
+not block the build, and it is deliberately the easy half of the job -- the
+critique pass in `.claude/skills/taste/SKILL.md` is the rest. To keep a
+deliberate exception, put `design-lint-disable` on the line or the line above it
+with the reason next to it, as `app/layout.tsx` does for the `themeColor`
+literal that browser metadata cannot express as a token.
+
 ## Learn More
 
 To learn more, take a look at the following resources:
