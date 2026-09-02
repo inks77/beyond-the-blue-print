@@ -44,7 +44,7 @@ voice the file already uses.
   band that paints its own contained grid on top of its fill.
 - `.blueprint-invert` — white-alpha lines for blue sheets; also re-points
   `--focus-ring`.
-- `.blueprint-on-accent` — lines for coral surfaces.
+- Coral surfaces take no grid at all — the accent stays flat.
 - `body::before` — the fixed global sheet behind everything.
 
 Never re-derive the gradients. Compose the utilities. Both the global layer and

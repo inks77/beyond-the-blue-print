@@ -92,9 +92,8 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
           </ul>
         </section>
 
-        <section className="blueprint-surface blueprint-on-accent mx-3 bg-accent px-6 py-16 md:mx-5 md:px-12 md:py-20 lg:mx-8 lg:px-16">
-          <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
-          <div className="relative flex flex-col justify-between gap-8 md:flex-row md:items-end">
+        <section className="mx-3 bg-accent px-6 py-16 md:mx-5 md:px-12 md:py-20 lg:mx-8 lg:px-16">
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-balance text-4xl font-black uppercase leading-[0.9] tracking-[-0.05em] text-accent-foreground md:text-6xl">
               {program.cta}.
             </h2>
