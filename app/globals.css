@@ -88,15 +88,28 @@
 html { scroll-behavior: smooth; }
 body { @apply bg-background text-foreground; position: relative; }
 
-/* --- Blueprint grid -------------------------------------------------------
-   One continuous drafting sheet behind the whole page. Minor lines every 24px,
-   major lines every 120px. Colours are driven by --bp-line / --bp-line-strong
-   so a section can re-tint the grid without redefining the geometry.        */
+/* --- Blueprint sheet ------------------------------------------------------
+   One continuous drafting sheet behind the whole page, in two layers. The grid
+   is the paper -- minor lines every 24px, major lines every 120px. The plan is
+   what is drafted on it: a ground floor plan, fixed behind every route. A grid
+   on its own is stationery; the drawing is what makes it a sheet.
+
+   Colours are driven by --bp-line / --bp-line-strong / --bp-plan so a section
+   can re-tint either without redefining the geometry.                       */
 :root {
   --bp-minor: 24px;
   --bp-major: 120px;
   --bp-line: color-mix(in srgb, var(--primary) 8%, transparent);
   --bp-line-strong: color-mix(in srgb, var(--primary) 14%, transparent);
+  /* The plan carries more weight than the grid on purpose -- poché walls and
+     dimension figures have to read as a drawing rather than as more graph
+     paper. Below this the drawing turns to smudge; above it, it competes with
+     the copy instead of sitting behind it.                                  */
+  --bp-plan: color-mix(in srgb, var(--primary) 26%, transparent);
+  /* How much of the sheet colour the veil paints back over the middle band.
+     If the middle ever reads busy, raise this rather than dropping --bp-plan:
+     thinning the plan where the copy is beats thinning it everywhere.       */
+  --bp-plan-veil: 0.78;
 }
 
 .blueprint-grid {
@@ -126,7 +139,56 @@ body::before {
   mask-image: radial-gradient(120% 100% at 50% 40%, #000 55%, transparent 100%);
 }
 
+/* The drawing on the sheet. public/blueprint-plan.svg carries no colour at all
+   -- every line in it is #000 -- because it is used as a mask, not an image:
+   the ink is --bp-plan, so the plan re-tints with the brand for free and no hex
+   reaches a component. Fixed and cover-sized like the grid above it. The plan
+   is paper, not content: it does not scroll, and nothing about it moves.    */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bp-plan);
+  -webkit-mask-image: url('/blueprint-plan.svg');
+  mask-image: url('/blueprint-plan.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
 body > * { position: relative; z-index: 1; }
+
+/* Body copy runs down the middle of every route, and a poché wall or a
+   dimension figure at full strength behind a paragraph is a legibility problem
+   rather than a texture. This paints the sheet colour back over the middle
+   band and thins out top and bottom, where the plan can stay crisp -- fixed, so
+   it stays registered with the plan as the page scrolls. z-index:-1 keeps it
+   under everything in the layout div without the content needing a z-index of
+   its own.
+
+   The edges thin the plan rather than clearing it: --muted-foreground copy over
+   an unveiled poché wall measures 4.43:1, just under 4.5, and 28% of the veil
+   takes it to 4.89:1. The middle still carries three and a half times as much
+   veil, so the top and bottom read as the crisp part of the sheet.          */
+.blueprint-veil {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--bp-plan-veil);
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--background) 28%, transparent) 0%,
+    var(--background) 26%,
+    var(--background) 74%,
+    color-mix(in srgb, var(--background) 28%, transparent) 100%
+  );
+}
 
 /* Coloured surfaces paint their own contained grid on top of their fill. */
 .blueprint-surface { position: relative; overflow: hidden; }
@@ -149,6 +211,30 @@ body > * { position: relative; z-index: 1; }
   --bp-line-strong: color-mix(in srgb, var(--accent-foreground) 13%, transparent);
 }
 
+/* The plan on a large blue band, paired with .blueprint-layer. The ink is white
+   alpha for the same reason .blueprint-invert's lines are: it holds this
+   contrast whatever --brand-blue is set to. Only the large surfaces take it; a
+   whole floor plan cropped into a card is noise, and those keep the grid alone.
+
+   The band uses the plain drawing, which differs from the global sheet twice
+   over. Its lettering is dropped -- a band crops the sheet to a slice, and half
+   a room name reads as a mistake, not as a drawing. And its walls are drawn as
+   hairlines rather than filled poché, because copy sits directly on these
+   bands: a filled wall behind primary-foreground/80 body copy takes it from
+   5.65:1 to 2.74:1, while line work at this alpha costs contrast nothing, the
+   same way the grid's own lines do not.                                     */
+.blueprint-plan-layer {
+  background-color: rgba(255, 255, 255, 0.34);
+  -webkit-mask-image: url('/blueprint-plan-plain.svg');
+  mask-image: url('/blueprint-plan-plain.svg');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
 /* --- Hero logo plate ------------------------------------------------------
    The logo video carries its own flat blue backdrop plus a soft glow around
    the mark, so dropped in as a plain rectangle it reads as a lighter panel
@@ -156,15 +242,16 @@ body > * { position: relative; z-index: 1; }
    rectangle. The plate is stacked *under* the section's blueprint layer, so
    the drafting lines run unbroken across the video instead of stopping at its
    edges; the copy stays above both. And the ::after frame fades the surface
-   colour back in over the outer band of the video, so the video's edge — and
+   colour back over the outer band of the video, so the video's edge — and
    any residual drift from the browser's video colour management — has nowhere
    to show a seam. The bands stop well clear of the mark, which occupies
    13%-84% across and 14%-65% down the frame.
 
-   Paint order: surface fill < logo plate < blueprint layer < copy. It lives
-   here rather than in utilities so the whole ladder is legible in one place,
-   and because the .blueprint-layer rule above is unlayered CSS that a Tailwind
-   z-index utility would not override.                                       */
+   Paint order: surface fill < logo plate < blueprint layers < copy, with the
+   plan layer sitting on the grid inside that one step. It lives here rather
+   than in utilities so the whole ladder is legible in one place, and because
+   the .blueprint-layer rule above is unlayered CSS that a Tailwind z-index
+   utility would not override.                                              */
 .hero-sheet > .blueprint-layer { z-index: 1; }
 .hero-sheet .hero-copy { z-index: 2; }
 .hero-plate { position: relative; z-index: 0; }
@@ -178,11 +265,13 @@ body > * { position: relative; z-index: 1; }
     linear-gradient(to bottom, var(--brand-blue), transparent 10%, transparent 90%, var(--brand-blue));
 }
 
+/* The veil goes with the plan: without the plan under it, it is just a cream
+   band laid over the page. */
 @media (prefers-reduced-transparency: reduce) {
-  body::before, .blueprint-layer { display: none; }
+  body::before, body::after, .blueprint-veil, .blueprint-layer { display: none; }
 }
 @media print {
-  body::before, .blueprint-layer { display: none !important; }
+  body::before, body::after, .blueprint-veil, .blueprint-layer { display: none !important; }
 }
 /* ------------------------------------------------------------------------ */
 

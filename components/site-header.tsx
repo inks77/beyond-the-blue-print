@@ -33,6 +33,7 @@ export function SiteHeader({ children }: { children?: React.ReactNode }) {
         Skip to main content
       </a>
       <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+      <div className="blueprint-layer blueprint-plan-layer" aria-hidden="true" />
 
       <nav
         className="hero-copy relative mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 md:px-8 lg:px-10"

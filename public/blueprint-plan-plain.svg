@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1120" width="1600" height="1120">
+  <!-- Ground floor plan, 1:100, 1 unit = 10mm. No colour anywhere: this file is
+       a CSS mask, so app/globals.css supplies the paint from the bp-plan token
+       and the drawing re-tints with the brand. A fill here would break that.
+       Note for editors: a double hyphen is illegal inside an XML comment, and a
+       browser that rejects this document renders the mask as empty, which hides
+       the layer completely rather than failing visibly. -->
+  <style>
+    rect, path, polygon, polyline, circle, ellipse, line { fill: none; stroke: #000; stroke-width: 2; stroke-linecap: square; }
+    .thin, .dim, .grid { fill: none; stroke: #000; stroke-width: 2; }
+    .dim { stroke-width: 1.5; }
+    .grid { stroke-width: 1.5; stroke-dasharray: 20 6 3 6; }
+    .grid-bubble { fill: none; stroke: #000; stroke-width: 2; }
+    text { fill: #000; font-family: monospace; letter-spacing: 1; }
+    .room { font-weight: bold; letter-spacing: 2; }
+  </style>
+  <line class="grid" x1="220" y1="118" x2="220" y2="150"/>
+  <circle class="grid-bubble" cx="220" cy="96" r="22"/>
+  <line class="grid" x1="620" y1="118" x2="620" y2="150"/>
+  <circle class="grid-bubble" cx="620" cy="96" r="22"/>
+  <line class="grid" x1="1020" y1="118" x2="1020" y2="150"/>
+  <circle class="grid-bubble" cx="1020" cy="96" r="22"/>
+  <line class="grid" x1="1420" y1="118" x2="1420" y2="150"/>
+  <circle class="grid-bubble" cx="1420" cy="96" r="22"/>
+  <line class="grid" x1="134" y1="150" x2="220" y2="150"/>
+  <circle class="grid-bubble" cx="112" cy="150" r="22"/>
+  <line class="grid" x1="134" y1="550" x2="220" y2="550"/>
+  <circle class="grid-bubble" cx="112" cy="550" r="22"/>
+  <line class="grid" x1="134" y1="990" x2="220" y2="990"/>
+  <circle class="grid-bubble" cx="112" cy="990" r="22"/>
+  <rect x="220" y="150" width="110" height="23"/>
+  <rect x="470" y="150" width="290" height="23"/>
+  <rect x="860" y="150" width="260" height="23"/>
+  <rect x="1290" y="150" width="130" height="23"/>
+  <line class="thin" x1="330" y1="150" x2="470" y2="150"/>
+  <line class="thin" x1="330" y1="161.5" x2="470" y2="161.5"/>
+  <line class="thin" x1="330" y1="173" x2="470" y2="173"/>
+  <line class="thin" x1="330" y1="150" x2="330" y2="173"/>
+  <line class="thin" x1="470" y1="150" x2="470" y2="173"/>
+  <polygon points="757,173 763,173 763,273 757,273"/>
+  <path class="thin" d="M 760 273 A 100 100 0 0 0 860 173"/>
+  <line class="thin" x1="1120" y1="150" x2="1290" y2="150"/>
+  <line class="thin" x1="1120" y1="161.5" x2="1290" y2="161.5"/>
+  <line class="thin" x1="1120" y1="173" x2="1290" y2="173"/>
+  <line class="thin" x1="1120" y1="150" x2="1120" y2="173"/>
+  <line class="thin" x1="1290" y1="150" x2="1290" y2="173"/>
+  <rect x="220" y="967" width="30" height="23"/>
+  <rect x="320" y="967" width="310" height="23"/>
+  <rect x="720" y="967" width="400" height="23"/>
+  <rect x="1290" y="967" width="130" height="23"/>
+  <line class="thin" x1="250" y1="967" x2="320" y2="967"/>
+  <line class="thin" x1="250" y1="978.5" x2="320" y2="978.5"/>
+  <line class="thin" x1="250" y1="990" x2="320" y2="990"/>
+  <line class="thin" x1="250" y1="967" x2="250" y2="990"/>
+  <line class="thin" x1="320" y1="967" x2="320" y2="990"/>
+  <line class="thin" x1="630" y1="967" x2="720" y2="967"/>
+  <line class="thin" x1="630" y1="978.5" x2="720" y2="978.5"/>
+  <line class="thin" x1="630" y1="990" x2="720" y2="990"/>
+  <line class="thin" x1="630" y1="967" x2="630" y2="990"/>
+  <line class="thin" x1="720" y1="967" x2="720" y2="990"/>
+  <line class="thin" x1="1120" y1="967" x2="1290" y2="967"/>
+  <line class="thin" x1="1120" y1="978.5" x2="1290" y2="978.5"/>
+  <line class="thin" x1="1120" y1="990" x2="1290" y2="990"/>
+  <line class="thin" x1="1120" y1="967" x2="1120" y2="990"/>
+  <line class="thin" x1="1290" y1="967" x2="1290" y2="990"/>
+  <rect x="220" y="150" width="23" height="130"/>
+  <rect x="220" y="420" width="23" height="360"/>
+  <rect x="220" y="900" width="23" height="90"/>
+  <line class="thin" x1="220" y1="280" x2="220" y2="420"/>
+  <line class="thin" x1="231.5" y1="280" x2="231.5" y2="420"/>
+  <line class="thin" x1="243" y1="280" x2="243" y2="420"/>
+  <line class="thin" x1="220" y1="280" x2="243" y2="280"/>
+  <line class="thin" x1="220" y1="420" x2="243" y2="420"/>
+  <line class="thin" x1="220" y1="780" x2="220" y2="900"/>
+  <line class="thin" x1="231.5" y1="780" x2="231.5" y2="900"/>
+  <line class="thin" x1="243" y1="780" x2="243" y2="900"/>
+  <line class="thin" x1="220" y1="780" x2="243" y2="780"/>
+  <line class="thin" x1="220" y1="900" x2="243" y2="900"/>
+  <rect x="1397" y="150" width="23" height="80"/>
+  <rect x="1397" y="350" width="23" height="50"/>
+  <rect x="1397" y="500" width="23" height="260"/>
+  <rect x="1397" y="900" width="23" height="90"/>
+  <line class="thin" x1="1397" y1="230" x2="1397" y2="350"/>
+  <line class="thin" x1="1408.5" y1="230" x2="1408.5" y2="350"/>
+  <line class="thin" x1="1420" y1="230" x2="1420" y2="350"/>
+  <line class="thin" x1="1397" y1="230" x2="1420" y2="230"/>
+  <line class="thin" x1="1397" y1="350" x2="1420" y2="350"/>
+  <polygon points="1397,497 1397,503 1297,503 1297,497"/>
+  <path class="thin" d="M 1297 500 A 100 100 0 0 1 1397 400"/>
+  <line class="thin" x1="1397" y1="760" x2="1397" y2="900"/>
+  <line class="thin" x1="1408.5" y1="760" x2="1408.5" y2="900"/>
+  <line class="thin" x1="1420" y1="760" x2="1420" y2="900"/>
+  <line class="thin" x1="1397" y1="760" x2="1420" y2="760"/>
+  <line class="thin" x1="1397" y1="900" x2="1420" y2="900"/>
+  <rect x="243" y="544" width="157" height="12"/>
+  <rect x="490" y="544" width="250" height="12"/>
+  <rect x="860" y="544" width="290" height="12"/>
+  <rect x="1240" y="544" width="157" height="12"/>
+  <polygon points="403,544 397,544 397,454 403,454"/>
+  <path class="thin" d="M 400 454 A 90 90 0 0 1 490 544"/>
+  <polygon points="1243,544 1237,544 1237,454 1243,454"/>
+  <path class="thin" d="M 1240 454 A 90 90 0 0 0 1150 544"/>
+  <rect x="243" y="676" width="17" height="12"/>
+  <rect x="350" y="676" width="234" height="12"/>
+  <rect x="664" y="676" width="136" height="12"/>
+  <rect x="870" y="676" width="210" height="12"/>
+  <rect x="1170" y="676" width="227" height="12"/>
+  <polygon points="347,688 353,688 353,778 347,778"/>
+  <path class="thin" d="M 350 778 A 90 90 0 0 1 260 688"/>
+  <polygon points="581,688 587,688 587,768 581,768"/>
+  <path class="thin" d="M 584 768 A 80 80 0 0 0 664 688"/>
+  <polygon points="797,688 803,688 803,758 797,758"/>
+  <path class="thin" d="M 800 758 A 70 70 0 0 0 870 688"/>
+  <polygon points="1167,688 1173,688 1173,778 1167,778"/>
+  <path class="thin" d="M 1170 778 A 90 90 0 0 1 1080 688"/>
+  <rect x="614" y="173" width="12" height="371"/>
+  <rect x="1014" y="173" width="12" height="77"/>
+  <rect x="1014" y="340" width="12" height="204"/>
+  <polygon points="1026,253 1026,247 1116,247 1116,253"/>
+  <path class="thin" d="M 1116 250 A 90 90 0 0 1 1026 340"/>
+  <rect x="560" y="688" width="12" height="279"/>
+  <rect x="760" y="688" width="12" height="279"/>
+  <rect x="900" y="688" width="12" height="279"/>
+  <line class="thin" x1="640" y1="510" x2="640" y2="376"/>
+  <line class="thin" x1="750" y1="510" x2="750" y2="376"/>
+  <line class="thin" x1="640" y1="510" x2="750" y2="510"/>
+  <line class="thin" x1="640" y1="483.5" x2="750" y2="483.5"/>
+  <line class="thin" x1="640" y1="457" x2="750" y2="457"/>
+  <line class="thin" x1="640" y1="430.5" x2="750" y2="430.5"/>
+  <line class="thin" x1="640" y1="404" x2="750" y2="404"/>
+  <line class="thin" x1="640" y1="377.5" x2="750" y2="377.5"/>
+  <polyline class="thin" points="628,364 686,364 694,355 702,373 710,364 762,364"/>
+  <polyline class="thin" points="628,376 686,376 694,367 702,385 710,376 762,376"/>
+  <line class="thin" x1="695" y1="502" x2="695" y2="396"/>
+  <polygon points="695,388 690,402 700,402"/>
+  <circle class="solid" cx="695" cy="506" r="4"/>
+  <rect class="thin" x="1026" y="173" width="371" height="60"/>
+  <line class="thin" x1="1116" y1="173" x2="1116" y2="233"/>
+  <line class="thin" x1="1206" y1="173" x2="1206" y2="233"/>
+  <line class="thin" x1="1296" y1="173" x2="1296" y2="233"/>
+  <rect class="thin" x="1337" y="233" width="60" height="167"/>
+  <line class="thin" x1="1337" y1="320" x2="1397" y2="320"/>
+  <rect class="thin" x="1130" y="183" width="65" height="40"/>
+  <circle class="thin" cx="1162" cy="203" r="5"/>
+  <circle class="thin" cx="1162" cy="179" r="4"/>
+  <circle class="thin" cx="1275" cy="190" r="10"/>
+  <circle class="thin" cx="1275" cy="216" r="10"/>
+  <circle class="thin" cx="1310" cy="190" r="10"/>
+  <circle class="thin" cx="1310" cy="216" r="10"/>
+  <rect class="thin" x="1256" y="177" width="73" height="52"/>
+  <rect class="thin" x="1026" y="400" width="60" height="67"/>
+  <line class="thin" x1="1032" y1="400" x2="1032" y2="467"/>
+  <rect class="thin" x="572" y="700" width="22" height="52"/>
+  <ellipse class="thin" cx="616" cy="726" rx="24" ry="26"/>
+  <rect class="thin" x="698" y="688" width="60" height="45"/>
+  <ellipse class="thin" cx="728" cy="710" rx="24" ry="16"/>
+  <circle class="thin" cx="728" cy="694" r="4"/>
+  <rect class="thin" x="580" y="897" width="160" height="70"/>
+  <rect class="thin" x="586" y="903" width="148" height="58" rx="8"/>
+  <circle class="thin" cx="608" cy="932" r="7"/>
+  <circle class="thin" cx="592" cy="910" r="4"/>
+  <circle class="thin" cx="592" cy="954" r="4"/>
+  <rect class="thin" x="400" y="700" width="150" height="200"/>
+  <rect class="thin" x="406" y="706" width="138" height="30"/>
+  <line class="thin" x1="400" y1="812" x2="550" y2="812"/>
+  <rect class="thin" x="1220" y="700" width="150" height="200"/>
+  <rect class="thin" x="1226" y="706" width="138" height="30"/>
+  <line class="thin" x1="1220" y1="812" x2="1370" y2="812"/>
+  <rect class="thin" x="1180" y="700" width="34" height="34"/>
+  <rect class="thin" x="330" y="907" width="140" height="60"/>
+  <line class="thin" x1="376.667" y1="907" x2="376.667" y2="967"/>
+  <line class="thin" x1="423.333" y1="907" x2="423.333" y2="967"/>
+  <rect class="thin" x="930" y="688" width="120" height="60"/>
+  <line class="thin" x1="970" y1="688" x2="970" y2="748"/>
+  <line class="thin" x1="1010" y1="688" x2="1010" y2="748"/>
+  <line class="dim" x1="220" y1="1008" x2="1420" y2="1008"/>
+  <line class="dim" x1="212" y1="1016" x2="228" y2="1000"/>
+  <line class="dim" x1="220" y1="996" x2="220" y2="1018"/>
+  <line class="dim" x1="612" y1="1016" x2="628" y2="1000"/>
+  <line class="dim" x1="620" y1="996" x2="620" y2="1018"/>
+  <line class="dim" x1="1012" y1="1016" x2="1028" y2="1000"/>
+  <line class="dim" x1="1020" y1="996" x2="1020" y2="1018"/>
+  <line class="dim" x1="1412" y1="1016" x2="1428" y2="1000"/>
+  <line class="dim" x1="1420" y1="996" x2="1420" y2="1018"/>
+  <line class="dim" x1="220" y1="1038" x2="1420" y2="1038"/>
+  <line class="dim" x1="212" y1="1046" x2="228" y2="1030"/>
+  <line class="dim" x1="220" y1="996" x2="220" y2="1048"/>
+  <line class="dim" x1="1412" y1="1046" x2="1428" y2="1030"/>
+  <line class="dim" x1="1420" y1="996" x2="1420" y2="1048"/>
+  <line class="dim" x1="196" y1="150" x2="196" y2="990"/>
+  <line class="dim" x1="204" y1="142" x2="188" y2="158"/>
+  <line class="dim" x1="214" y1="150" x2="186" y2="150"/>
+  <line class="dim" x1="204" y1="542" x2="188" y2="558"/>
+  <line class="dim" x1="214" y1="550" x2="186" y2="550"/>
+  <line class="dim" x1="204" y1="982" x2="188" y2="998"/>
+  <line class="dim" x1="214" y1="990" x2="186" y2="990"/>
+  <line class="dim" x1="166" y1="150" x2="166" y2="990"/>
+  <line class="dim" x1="174" y1="142" x2="158" y2="158"/>
+  <line class="dim" x1="214" y1="150" x2="156" y2="150"/>
+  <line class="dim" x1="174" y1="982" x2="158" y2="998"/>
+  <line class="dim" x1="214" y1="990" x2="156" y2="990"/>
+  <line class="dim" x1="1340" y1="556" x2="1340" y2="676"/>
+  <line class="dim" x1="1348" y1="548" x2="1332" y2="564"/>
+  <line class="dim" x1="1397" y1="556" x2="1330" y2="556"/>
+  <line class="dim" x1="1348" y1="668" x2="1332" y2="684"/>
+  <line class="dim" x1="1397" y1="676" x2="1330" y2="676"/>
+  <circle class="thin" cx="1508" cy="250" r="52"/>
+  <polygon points="1508,214 1520,288 1508,272"/>
+  <polyline class="thin" points="1508,214 1496,288 1508,272"/>
+  <rect class="thin" x="1152" y="1050" width="428" height="52"/>
+  <line class="thin" x1="1330" y1="1050" x2="1330" y2="1102"/>
+  <line class="thin" x1="1470" y1="1050" x2="1470" y2="1102"/>
+</svg>
