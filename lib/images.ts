@@ -156,12 +156,13 @@ const records = {
     height: 800,
     status: 'ready',
   },
-  'on-ground-team': {
-    id: 'on-ground-team',
-    src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85',
-    alt: 'Team collaborating around a table',
-    width: 900,
-    height: 600,
+  'table-btbp': {
+    id: 'table-btbp',
+    src: '/table-btbp.jpg',
+    alt: 'Three people talking across a round table at a Beyond the Blue Print Uganda session, one of them making a point mid-sentence',
+    width: 3648,
+    height: 2432,
+    credit: 'A table mid-conversation — Beyond the Blue Print Uganda',
     status: 'ready',
   },
   'main-stage-speaker': {
