@@ -11,10 +11,17 @@ export function FieldNoteGrid({ items }: { items: FieldNote[] }) {
       {items.map((item, index) =>
         item.kind === 'image' ? (
           <figure key={item.image} className={`relative overflow-hidden bg-muted ${item.className ?? ''}`}>
+            {/* The grayscale-to-colour reveal is the archive's one hover
+                gesture, so it names the single property it moves rather than
+                sweeping all of them, and the picture does not grow: a tile
+                that scales under a fixed caption drags the photograph out
+                from under it. Filter is a paint rather than a composite,
+                which is affordable here only because the tiles are small and
+                one is hovered at a time. */}
             <SiteImage
               id={item.image}
               fill
-              className="object-cover grayscale transition-all duration-500 hover:scale-105 hover:grayscale-0"
+              className="object-cover grayscale transition-[filter] duration-200 ease-out hover:grayscale-0"
               sizes="(max-width: 768px) 100vw, 33vw"
             />
             <figcaption className="absolute bottom-0 left-0 bg-background/90 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.2em]">

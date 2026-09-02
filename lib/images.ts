@@ -141,6 +141,7 @@ const records = {
   'nile-transformers': {
     id: 'nile-transformers',
     src: '/nile-transformers.jpg',
+    // design-lint-disable: quotes the wording painted on the sign in the picture
     alt: 'Two people in hard hats standing either side of the Nile Transformers sign — "Empowering the nation" — outside the factory in Kampala',
     width: 3024,
     height: 4032,
