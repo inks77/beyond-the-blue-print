@@ -79,7 +79,7 @@ export default function Page() {
           </div>
           <div className="relative min-h-96 bg-muted">
             <SiteImage
-              id="ideas-in-motion"
+              id="the-panel"
               fill
               className="object-cover grayscale mix-blend-multiply"
               sizes="(max-width: 768px) 100vw, 50vw"

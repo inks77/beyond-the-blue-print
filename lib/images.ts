@@ -166,6 +166,16 @@ const records = {
     credit: 'A table mid-conversation — Beyond the Blue Print Uganda',
     status: 'ready',
   },
+  'the-panel': {
+    id: 'the-panel',
+    src: '/the-panel.jpg',
+    // design-lint-disable: quotes the line on the screen behind the panel
+    alt: 'Four women seated on stage at a Beyond the Blue Print Uganda panel, one speaking into a microphone, the screen behind them reading "Real journeys, real stories, real inspiration"',
+    width: 1170,
+    height: 662,
+    credit: 'The panel — Beyond the Blue Print Uganda',
+    status: 'ready',
+  },
   'main-stage-speaker': {
     id: 'main-stage-speaker',
     src: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=900&q=85',
