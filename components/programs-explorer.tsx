@@ -31,6 +31,11 @@ export function ProgramsExplorer() {
         </div>
 
         <div className="grid gap-px border border-border bg-border md:grid-cols-2">
+          {/* The highlighted card is flat blue. A card crops the grid to a few
+              squares, which reads as texture on a small tile rather than as a
+              sheet; the panel below is wide enough to carry the drawing, so it
+              keeps it and the cards point at it. .blueprint-invert stays on the
+              card for the focus ring it retunes for the blue surface. */}
           {programs.map((program) => (
             <Link
               key={program.slug}
@@ -41,7 +46,6 @@ export function ProgramsExplorer() {
                 previewProgram === program.slug ? 'blueprint-invert bg-primary text-primary-foreground' : 'hover:bg-accent/20'
               }`}
             >
-              {previewProgram === program.slug && <div className="blueprint-layer blueprint-grid" aria-hidden="true" />}
               <div className="relative flex items-start justify-between">
                 <span className="font-mono text-xs">{program.number}</span>
                 <ArrowUpRight
