@@ -82,10 +82,19 @@
      surfaces re-point this token at --accent below, where it measures
      3.80:1. No new hue is introduced either way.                          */
   --focus-ring: oklch(0.46 0.16 48);
+
+  /* Height of the fixed nav bar. It is a token because three things have to
+     agree on it: the bar itself, the spacer that holds its place at the top of
+     the blue sheet, and the scroll padding that keeps a hash target from
+     landing underneath it. 5rem is the logo mark at 40px with a 20px air above
+     and below -- the spacing the nav had when it still sat in flow.        */
+  --nav-height: 5rem;
 }
 
 * { @apply border-border; }
-html { scroll-behavior: smooth; }
+/* The nav is fixed, so a hash target scrolled to the top of the viewport would
+   land behind it. */
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
 body { @apply bg-background text-foreground; position: relative; }
 
 /* --- Blueprint sheet ------------------------------------------------------
