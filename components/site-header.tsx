@@ -160,7 +160,10 @@ export function SiteHeader({ children }: { children?: React.ReactNode }) {
         id="top"
         className="hero-sheet blueprint-surface blueprint-invert relative w-full overflow-hidden bg-primary text-primary-foreground"
       >
-        <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+        {/* The plan without the grid under it. Every other blue band pairs the
+            two, but this one also carries the logo video and the largest type
+            on the site, and graph paper behind both reads as texture on texture
+            -- the drawing alone is the blueprint here. */}
         <div className="blueprint-layer blueprint-plan-layer" aria-hidden="true" />
 
         {/* Holds the space the fixed bar no longer takes up in flow, so the

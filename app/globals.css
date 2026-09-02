@@ -249,16 +249,15 @@ body > * { position: relative; z-index: 1; }
    the mark, so dropped in as a plain rectangle it reads as a lighter panel
    laid on the hero rather than as part of it. Two things dissolve that
    rectangle. The plate is stacked *under* the section's blueprint layer, so
-   the drafting lines run unbroken across the video instead of stopping at its
-   edges; the copy stays above both. And the ::after frame fades the surface
+   the plan runs unbroken across the video instead of stopping at its edges;
+   the copy stays above both. And the ::after frame fades the surface
    colour back over the outer band of the video, so the video's edge — and
    any residual drift from the browser's video colour management — has nowhere
    to show a seam. The bands stop well clear of the mark, which occupies
    13%-84% across and 14%-65% down the frame.
 
-   Paint order: surface fill < logo plate < blueprint layers < copy, with the
-   plan layer sitting on the grid inside that one step. It lives here rather
-   than in utilities so the whole ladder is legible in one place, and because
+   Paint order: surface fill < logo plate < plan layer < copy. It lives here
+   rather than in utilities so the whole ladder is legible in one place, and because
    the .blueprint-layer rule above is unlayered CSS that a Tailwind z-index
    utility would not override.                                              */
 .hero-sheet > .blueprint-layer { z-index: 1; }
