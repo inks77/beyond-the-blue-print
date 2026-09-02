@@ -49,6 +49,7 @@ export default function ProgramsPage() {
 
         <section className="blueprint-surface blueprint-invert relative mx-3 overflow-hidden bg-primary px-6 py-16 text-primary-foreground md:mx-5 md:px-12 md:py-20 lg:mx-8 lg:px-16">
           <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+          <div className="blueprint-layer blueprint-plan-layer" aria-hidden="true" />
           <div className="relative flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-balance text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] md:text-6xl">
               Not sure which one you are?

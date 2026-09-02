@@ -68,6 +68,9 @@ export default function RootLayout({
             sheet as the nav, so the header cannot be hoisted up here -- while
             the footer is identical everywhere and lives here. */}
         <div className="min-h-screen overflow-hidden text-foreground">
+          {/* Thins the fixed floor plan across the middle band so no drafting
+              line sits behind body copy at full strength; see globals.css. */}
+          <div className="blueprint-veil" aria-hidden="true" />
           {children}
           <SiteFooter />
         </div>

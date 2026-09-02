@@ -80,6 +80,7 @@ export default async function RegisterPage({
 
         <section className="blueprint-surface blueprint-invert mx-3 overflow-hidden bg-primary px-6 py-14 text-primary-foreground md:mx-5 md:px-12 md:py-16 lg:mx-8 lg:px-16">
           <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+          <div className="blueprint-layer blueprint-plan-layer" aria-hidden="true" />
           <div className="relative flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <h2 className="max-w-2xl text-balance text-3xl font-black uppercase leading-[0.95] tracking-[-0.05em] md:text-4xl">
               The conference is the room everything else feeds into.

@@ -40,6 +40,7 @@ export function WatchFilm() {
       id="watch"
     >
       <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+      <div className="blueprint-layer blueprint-plan-layer" aria-hidden="true" />
       <div className="relative grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-16">
         <div>
           <p className="eyebrow text-primary-foreground/60">Watch</p>

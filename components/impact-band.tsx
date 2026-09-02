@@ -8,6 +8,7 @@ export function ImpactBand() {
   return (
     <section className="blueprint-surface blueprint-invert relative bg-primary text-primary-foreground" aria-label="The hub in numbers">
       <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+      <div className="blueprint-layer blueprint-plan-layer" aria-hidden="true" />
       <div className="relative mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20 lg:px-10">
         <div className="grid gap-px bg-primary-foreground/20 md:grid-cols-3">
           {impactStats.map((stat) => (
