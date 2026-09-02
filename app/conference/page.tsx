@@ -74,7 +74,7 @@ export default function ConferencePage() {
         <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-20 md:grid-cols-2 md:px-8 md:pb-28 lg:px-10">
           <div className="relative min-h-96 bg-muted">
             <SiteImage
-              id="room-audience"
+              id="the-room-btbp"
               fill
               className="object-cover grayscale mix-blend-multiply"
               sizes="(max-width: 768px) 100vw, 50vw"

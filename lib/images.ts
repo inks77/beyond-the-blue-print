@@ -148,12 +148,13 @@ const records = {
     credit: 'Nile Transformers, Kampala — an On Ground visit',
     status: 'ready',
   },
-  'room-audience': {
-    id: 'room-audience',
-    src: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Audience gathered at a conference',
-    width: 1200,
-    height: 800,
+  'the-room-btbp': {
+    id: 'the-room-btbp',
+    src: '/the-room-btbp.jpg',
+    alt: 'Rows of people seated in a Kampala conference room at a Beyond the Blue Print session, delegate lanyards on, all turned towards the stage',
+    width: 3648,
+    height: 2432,
+    credit: 'The room listening — Beyond the Blue Print Uganda',
     status: 'ready',
   },
   'table-btbp': {

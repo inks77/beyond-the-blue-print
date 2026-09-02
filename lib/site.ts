@@ -172,7 +172,7 @@ export type FieldNote =
 export const fieldNotes: FieldNote[] = [
   {
     kind: 'image',
-    image: 'room-audience',
+    image: 'the-room-btbp',
     tag: 'The room',
     className: 'md:col-span-2 md:row-span-2',
   },
