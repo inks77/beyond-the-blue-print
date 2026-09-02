@@ -39,7 +39,9 @@ export function WatchFilm() {
       className="blueprint-surface blueprint-invert relative mx-3 overflow-hidden bg-primary px-6 py-16 text-primary-foreground md:mx-5 md:px-12 md:py-20 lg:mx-8 lg:px-16"
       id="watch"
     >
-      <div className="blueprint-layer blueprint-grid" aria-hidden="true" />
+      {/* The plan without the grid under it, as on the hero. This band carries the
+          film frame and the largest type in the section, and graph paper behind
+          both is texture on texture -- the drawing alone is the blueprint here. */}
       <div className="blueprint-layer blueprint-plan-layer" aria-hidden="true" />
       <div className="relative grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-16">
         <div>
