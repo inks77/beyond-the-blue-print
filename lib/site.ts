@@ -156,7 +156,7 @@ export function programHref(program: Program) {
    measured; do not add a number that has not been counted. */
 export const impactStats = [
   { value: '04', label: 'Ways in', note: 'Conference, On Ground, The Show, Mentorship' },
-  { value: '2026', label: 'Flagship conference', note: 'The first full gathering' },
+  { value: '2025', label: 'Flagship conference', note: 'The first full gathering' },
   { value: '01', label: 'Home base', note: 'Kampala, Uganda — building in public' },
 ]
 

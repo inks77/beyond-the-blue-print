@@ -51,7 +51,7 @@ export default function ConferencePage() {
           eyebrow="The gathering / 01"
           title="The room changes everything."
           copy="Once a year we put the whole community in one room — emerging founders, investors, creatives, and business leaders with decades behind them."
-          meta="Kampala, Uganda / 2026 — dates announced to the list first"
+          meta="Kampala, Uganda — dates announced to the list first"
         />
       </SiteHeader>
 
@@ -80,7 +80,7 @@ export default function ConferencePage() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className="absolute bottom-4 left-4 bg-accent px-4 py-3 font-mono text-xs uppercase text-accent-foreground">
-              Ideas in motion / 2026
+              Ideas in motion / 2025
             </div>
           </div>
           <div>
