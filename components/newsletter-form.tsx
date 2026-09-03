@@ -12,8 +12,8 @@ export function NewsletterForm({ tone = 'accent' }: { tone?: 'accent' | 'plain' 
 
   const text = tone === 'accent' ? 'text-accent-foreground' : 'text-foreground'
   const border = tone === 'accent' ? 'border-accent-foreground/50' : 'border-border'
-  const placeholder = tone === 'accent' ? 'placeholder:text-accent-foreground/60' : 'placeholder:text-muted-foreground'
-  const help = tone === 'accent' ? 'text-accent-foreground/70' : 'text-muted-foreground'
+  const placeholder = tone === 'accent' ? 'placeholder:text-accent-foreground/75' : 'placeholder:text-muted-foreground'
+  const help = tone === 'accent' ? 'text-accent-foreground/75' : 'text-muted-foreground'
 
   if (submitted) {
     return (

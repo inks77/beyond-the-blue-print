@@ -116,7 +116,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
                     <span className="font-mono text-xs text-muted-foreground">{item.number}</span>
                     <ArrowUpRight className="size-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                   </div>
-                  <p className="mt-10 text-xs font-bold uppercase tracking-[0.16em] text-accent">{item.label}</p>
+                  <p className="mt-10 text-xs font-bold uppercase tracking-[0.16em] text-accent-ink">{item.label}</p>
                   <h2 className="mt-2 text-xl font-black uppercase tracking-[-0.03em]">{item.title}</h2>
                 </Link>
               </li>

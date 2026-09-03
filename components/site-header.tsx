@@ -73,14 +73,16 @@ export function SiteHeader({ children }: { children?: React.ReactNode }) {
 
   return (
     <>
-      {/* The rule under the bar is drawn by adding the border, not by fading its
-          colour: `* { @apply border-border }` in globals.css is unlayered, so it
-          beats any border-colour utility and a "transparent" border would still
-          paint a hairline over the hero. */}
+      {/* The rule under the bar appears with the fill and not before it: at the
+          top of the page the bar is part of the hero sheet, and a line across
+          the drawing there is a line that belongs to nothing. It is the same
+          white hairline the sheet uses everywhere else -- the default
+          --border is a warm tan for the cream paper and reads as a stray
+          pencil mark on blue. */}
       <div
         className={cn(
           'blueprint-invert fixed inset-x-0 top-0 z-50 text-primary-foreground transition-colors duration-200 ease-out',
-          filled && 'border-b bg-primary',
+          filled && 'border-b border-primary-foreground/30 bg-primary',
         )}
       >
         <a
@@ -149,7 +151,7 @@ export function SiteHeader({ children }: { children?: React.ReactNode }) {
                 {link.label}
               </Link>
             ))}
-            <Link href={registerHref()} className="flex items-center gap-2 text-accent" onClick={() => setMenuOpen(false)}>
+            <Link href={registerHref()} className="flex items-center gap-2 text-accent-ink" onClick={() => setMenuOpen(false)}>
               Join the hub <ArrowUpRight className="size-4" />
             </Link>
           </div>

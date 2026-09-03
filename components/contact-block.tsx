@@ -12,7 +12,7 @@ export function ContactBlock() {
     >
       <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-end">
         <div>
-          <p className="eyebrow text-accent-foreground/60">Pull up a chair</p>
+          <p className="eyebrow text-accent-foreground/75">Pull up a chair</p>
           <h2 className="mt-5 max-w-2xl text-balance text-5xl font-black uppercase leading-[0.88] tracking-[-0.06em] text-accent-foreground md:text-7xl">
             Your next move starts here.
           </h2>

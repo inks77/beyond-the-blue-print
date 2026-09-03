@@ -123,7 +123,7 @@ export default function AboutPage() {
                       <span className="font-mono text-xs text-muted-foreground">{program.number}</span>
                       <ArrowUpRight className="size-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                     </div>
-                    <p className="mt-10 text-xs font-bold uppercase tracking-[0.16em] text-accent">{program.label}</p>
+                    <p className="mt-10 text-xs font-bold uppercase tracking-[0.16em] text-accent-ink">{program.label}</p>
                     <h3 className="mt-2 text-2xl font-black uppercase tracking-[-0.03em]">{program.title}</h3>
                   </Link>
                 </li>

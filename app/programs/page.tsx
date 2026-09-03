@@ -36,7 +36,7 @@ export default function ProgramsPage() {
                 >
                   <span className="font-mono text-xs text-muted-foreground md:pt-2">{program.number}</span>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent">{program.label}</p>
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-accent-ink">{program.label}</p>
                     <h2 className="mt-2 text-3xl font-black uppercase tracking-[-0.04em] md:text-4xl">{program.title}</h2>
                     <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">{program.copy}</p>
                   </div>

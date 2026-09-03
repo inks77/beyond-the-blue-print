@@ -35,8 +35,13 @@
   --color-ring: var(--ring);
   --color-destructive: var(--destructive);
   --color-brand-blue: var(--brand-blue);
-  --font-sans: 'Arial', 'Helvetica Neue', sans-serif;
-  --font-mono: 'Courier New', monospace;
+  --color-accent-ink: var(--accent-ink);
+  /* The families themselves are loaded in app/layout.tsx; these two names are
+     what the utilities resolve to. The fallbacks are what a visitor reads for
+     the few hundred milliseconds before the woff2 lands, so they are metrically
+     close rather than alphabetically convenient. */
+  --font-sans: var(--font-archivo), 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'SF Mono', 'Menlo', monospace;
 }
 
 :root {
@@ -49,39 +54,62 @@
      converted value is the one to match, not the raw one. Every blue in the
      design references this token — never the literal.                        */
   --brand-blue: #154e91;
-  --background: oklch(0.97 0.012 90);
-  --foreground: oklch(0.16 0.02 255);
-  --card: oklch(0.985 0.008 90);
-  --card-foreground: oklch(0.16 0.02 255);
-  --popover: oklch(0.985 0.008 90);
-  --popover-foreground: oklch(0.16 0.02 255);
+  /* Blueprint paper, not white with a wash. The chroma is what makes it read as
+     a stock the drawing is printed on; below about 0.02 it goes grey and the
+     blue lines on it look printed on office paper.                          */
+  --background: oklch(0.968 0.026 86);
+  /* Ink, not black. It carries the blue of the sheet so body copy belongs to
+     the same drawing as the lines -- 16.84:1 on --background either way, so the
+     colour costs no legibility.                                             */
+  --foreground: oklch(0.19 0.045 255);
+  --card: oklch(0.985 0.016 86);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.985 0.016 86);
+  --popover-foreground: var(--foreground);
   --primary: var(--brand-blue);
-  --primary-foreground: oklch(0.98 0.01 90);
-  --secondary: oklch(0.92 0.02 90);
-  --secondary-foreground: oklch(0.16 0.02 255);
-  --muted: oklch(0.92 0.02 90);
-  --muted-foreground: oklch(0.45 0.03 255);
-  --accent: oklch(0.78 0.16 48);
-  --accent-foreground: oklch(0.16 0.02 255);
-  --border: oklch(0.78 0.025 90);
-  --input: oklch(0.78 0.025 90);
+  --primary-foreground: oklch(0.98 0.014 86);
+  --secondary: oklch(0.915 0.034 86);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.915 0.034 86);
+  --muted-foreground: oklch(0.445 0.048 252);
+  /* Coral, at the edge of what sRGB can actually print at this lightness. The
+     old value asked for more chroma than the gamut holds (0.16 at L 0.78) and
+     every browser quietly mapped it somewhere paler -- the palette was being
+     chosen by the gamut-mapper rather than by us. This is measured to sit just
+     inside the boundary, so what ships is what was picked: a coral that reads
+     as a signal on both the cream sheet and the blue one.                   */
+  --accent: oklch(0.72 0.179 42);
+  --accent-foreground: var(--foreground);
+  /* Coral as *type*, which is a different colour from coral as a fill. The
+     fill above measures 2.42:1 on the sheet -- fine behind black ink, and far
+     too pale to be the 12px bold labels that were set in it (2.00:1 before
+     this). Same hue, dropped in lightness until it clears 4.5:1 on the sheet
+     (5.49:1) and on the muted panels (4.68:1). .blueprint-invert re-points it
+     for the blue sheet, the way --focus-ring is re-pointed.                 */
+  --accent-ink: oklch(0.515 0.155 42);
+  /* Hairlines are structure here, not decoration: they are the only thing
+     separating one card from the next in the gap grids. At the old value they
+     measured 1.83:1 and dissolved into the paper on any screen with a bit of
+     glare. This clears the 3:1 that WCAG 1.4.11 asks of a meaningful boundary
+     (3.07:1) while staying a drawn line rather than a rule.                 */
+  --border: oklch(0.64 0.042 86);
+  --input: oklch(0.64 0.042 86);
   --ring: var(--brand-blue);
   /* The one colour outside the blue/cream/coral palette. Form validation has
      to read as wrong at a glance, and coral is the palette's "go" colour --
      the accent every call to action is painted in -- so it cannot also be the
-     error. Deep enough to clear 4.5:1 on --background (6.35:1) and on the
-     muted panels the form sits on.                                          */
+     error. Deep enough to clear 4.5:1 on --background (6.59:1) and on the
+     muted panels the form sits on (5.62:1).                                 */
   --destructive: oklch(0.48 0.19 25);
   --radius: 0rem;
   /* Focus indicator. WCAG 1.4.11/2.4.11 wants 3:1 against whatever the ring
-     is drawn on, and --accent itself only manages 2.00:1 on --background.
-     This is the same accent hue and chroma dropped in lightness until it
-     clears 3:1 on both light surfaces the ring can land on: --background
-     (6.94:1) and --accent (3.47:1). It cannot also clear 3:1 on the blue
-     sheet -- darkening trades one surface for the other -- so the blue
-     surfaces re-point this token at --accent below, where it measures
-     3.80:1. No new hue is introduced either way.                          */
-  --focus-ring: oklch(0.46 0.16 48);
+     is drawn on, and --accent itself only manages 2.42:1 on --background.
+     This is the same accent hue dropped in lightness until it clears 3:1 on
+     both light surfaces the ring can land on: --background (8.84:1) and
+     --accent (3.65:1). It cannot also clear 3:1 on the blue sheet --
+     darkening trades one surface for the other -- so the blue surfaces
+     re-point this token below. No new hue is introduced either way.       */
+  --focus-ring: oklch(0.40 0.118 42);
 
   /* Height of the fixed nav bar. It is a token because three things have to
      agree on it: the bar itself, the spacer that holds its place at the top of
@@ -91,11 +119,19 @@
   --nav-height: 5rem;
 }
 
-* { @apply border-border; }
+/* The default border colour, in @layer base rather than unlayered. Unlayered
+   CSS outranks anything in a layer whatever the selector, so as a bare rule
+   this `*` was beating every border-* utility on the site: `border-primary-
+   foreground/30` on the hero rule and `border-accent-foreground/50` in the
+   footer both resolved to --border. In the base layer the utilities win, which
+   is the whole point of setting a default. */
+@layer base {
+  * { @apply border-border; }
+}
 /* The nav is fixed, so a hash target scrolled to the top of the viewport would
    land behind it. */
 html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
-body { @apply bg-background text-foreground; position: relative; }
+body { @apply bg-background text-foreground font-sans; position: relative; }
 
 /* --- Blueprint sheet ------------------------------------------------------
    One continuous drafting sheet behind the whole page, in two layers. The grid
@@ -108,13 +144,13 @@ body { @apply bg-background text-foreground; position: relative; }
 :root {
   --bp-minor: 24px;
   --bp-major: 120px;
-  --bp-line: color-mix(in srgb, var(--primary) 8%, transparent);
-  --bp-line-strong: color-mix(in srgb, var(--primary) 14%, transparent);
+  --bp-line: color-mix(in srgb, var(--primary) 11%, transparent);
+  --bp-line-strong: color-mix(in srgb, var(--primary) 19%, transparent);
   /* The plan carries more weight than the grid on purpose -- poché walls and
      dimension figures have to read as a drawing rather than as more graph
      paper. Below this the drawing turns to smudge; above it, it competes with
      the copy instead of sitting behind it.                                  */
-  --bp-plan: color-mix(in srgb, var(--primary) 26%, transparent);
+  --bp-plan: color-mix(in srgb, var(--primary) 30%, transparent);
   /* How much of the sheet colour the veil paints back over the middle band.
      If the middle ever reads busy, raise this rather than dropping --bp-plan:
      thinning the plan where the copy is beats thinning it everywhere.       */
@@ -181,9 +217,10 @@ body > * { position: relative; z-index: 1; }
    its own.
 
    The edges thin the plan rather than clearing it: --muted-foreground copy over
-   an unveiled poché wall measures 4.43:1, just under 4.5, and 28% of the veil
-   takes it to 4.89:1. The middle still carries three and a half times as much
-   veil, so the top and bottom read as the crisp part of the sheet.          */
+   an unveiled poché wall measures 5.11:1 and 28% of the veil takes it to
+   5.50:1, so the drawing can be drawn at the strength it is and still be read
+   through. The middle still carries three and a half times as much veil, so the
+   top and bottom read as the crisp part of the sheet.                       */
 .blueprint-veil {
   position: fixed;
   inset: 0;
@@ -209,13 +246,21 @@ body > * { position: relative; z-index: 1; }
   z-index: 0;
   pointer-events: none;
 }
-/* On the blue surfaces the grid is drawn from white alpha rather than a fixed
-   hex, so it keeps exactly this contrast whatever --brand-blue is set to. */
+/* The token set for anything sitting on the blue sheet. The grid lines are
+   drawn from white alpha rather than a fixed hex, so they keep exactly this
+   contrast whatever --brand-blue is set to -- and the two coral tokens turn
+   around, because on blue the readable coral is a lighter one, not a darker
+   one. A section takes this class to retune the tokens whether or not it
+   paints a grid: it declares nothing on its own. */
 .blueprint-invert {
-  --bp-line: rgba(255, 255, 255, 0.077);
-  --bp-line-strong: rgba(255, 255, 255, 0.22);
-  /* On the blue sheet the undarkened accent is the readable ring (3.80:1). */
-  --focus-ring: var(--accent);
+  --bp-line: rgba(255, 255, 255, 0.10);
+  --bp-line-strong: rgba(255, 255, 255, 0.26);
+  /* Coral as type, lifted instead of dropped: the fill coral reaches only
+     3.13:1 on the blue, which is a boundary but not 12px of bold label. Same
+     hue, raised until it clears 4.5:1 (4.77:1) -- and it is the readable focus
+     ring on this surface for the same reason. */
+  --accent-ink: oklch(0.83 0.097 42);
+  --focus-ring: var(--accent-ink);
 }
 
 /* The plan on a large blue band, paired with .blueprint-layer. The ink is white
@@ -283,5 +328,22 @@ body > * { position: relative; z-index: 1; }
 
 ::selection { background: var(--accent); color: var(--accent-foreground); }
 :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
-.eyebrow { @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground; }
+/* Every display line on the site is set `font-black uppercase` and tracked
+   negative, which is what gives the headings their weight -- but negative
+   tracking closes the word spaces along with the letter spaces, and Archivo's
+   space is narrow to begin with (0.20em against Arial's 0.278em, which these
+   lines were originally spaced against). Uppercase has no ascenders or
+   descenders to help the eye find the gap either. This gives the word space
+   back what the tracking takes, and nothing else: it is scoped to the display
+   treatment, so body copy and the mono annotations are untouched. */
+.font-black.uppercase { word-spacing: 0.06em; }
+/* In @layer components, not unlayered, for the same reason the border default
+   above is in @layer base: unlayered CSS outranks every layer, so this class's
+   text-muted-foreground was beating the `text-primary-foreground/70` and
+   `text-accent-foreground/75` the coloured surfaces pair it with -- the eyebrow
+   over the film band was rendering in the cream sheet's grey at 1.10:1. In a
+   layer the surface's own utility wins, which is what the pairing intends. */
+@layer components {
+  .eyebrow { @apply font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
