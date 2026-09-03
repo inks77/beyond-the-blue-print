@@ -105,7 +105,7 @@ export default function AboutPage() {
         </section>
 
         <section className="border-y border-border bg-muted/40">
-          <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20 lg:px-10">
+          <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24 lg:px-10">
             <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div>
                 <p className="eyebrow">What that becomes</p>

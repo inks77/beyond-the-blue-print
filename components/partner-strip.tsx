@@ -10,7 +10,7 @@ import { partners } from '@/lib/site'
 export function PartnerStrip() {
   return (
     <section className="border-y border-border bg-muted/40">
-      <div className="mx-auto max-w-7xl px-5 py-14 md:px-8 md:py-16 lg:px-10">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24 lg:px-10">
         <p className="eyebrow">Partners</p>
         {partners.length > 0 ? (
           <ul className="mt-8 flex flex-wrap items-center gap-x-12 gap-y-6">

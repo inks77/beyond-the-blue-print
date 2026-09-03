@@ -93,3 +93,31 @@ in `border-border` (or `border-primary-foreground/30` on the blue sheet). The
 drafting grid is continuous behind the whole page — layouts that align to its
 24px minor / 120px major lines will feel correct for reasons the visitor cannot
 name. That is the point.
+
+### Section spacing: two rhythms
+
+Every section on every route is one of these two. Both go on the inner
+`max-w-7xl` wrapper, never on the surface element — a band's border and
+background run the full width of the viewport while its content stays in the
+container.
+
+```
+py-20 md:py-28   Section — sits directly on the cream sheet
+py-16 md:py-24   Band — paints its own surface: border-y, border-t,
+                 bg-muted/40, or the blue bg-primary
+```
+
+The distance between the two is the reason for having two. A band at
+`md:py-20` against a section at `md:py-28` is too small a gap to read as a
+decision: 16/24/28 gives three legible steps down the page, 16/20/28 gives two
+and a wobble. Same surface means same rhythm — `partner-strip.tsx` and
+`programs-explorer.tsx` sit on identical `border-y border-border bg-muted/40`,
+so they are padded identically.
+
+Two things sit outside the rhythm:
+
+- The second section of `app/conference/page.tsx` runs `pb-20 md:pb-28`, bottom
+  only. It follows the section above it with no surface change between them, so
+  full padding on both would stack into a dead band of cream.
+- Heroes (`hero.tsx`, `page-hero.tsx`), the nav and the footer set their own
+  vertical space. They bracket the page rather than take a place in its rhythm.
