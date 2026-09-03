@@ -85,7 +85,7 @@ export default function Page() {
               sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div className="absolute bottom-4 left-4 bg-accent px-4 py-3 font-mono text-xs uppercase text-accent-foreground">
-              Ideas in motion / 2026
+              Ideas in motion / 2025
             </div>
           </div>
         </section>
