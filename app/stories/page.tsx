@@ -31,7 +31,7 @@ export default function StoriesPage() {
         </section>
 
         <section className="border-t border-border">
-          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 px-5 py-16 md:flex-row md:items-end md:px-8 md:py-20 lg:px-10">
+          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 px-5 py-16 md:flex-row md:items-end md:px-8 md:py-24 lg:px-10">
             <div>
               <p className="eyebrow">Add to it</p>
               <h2 className="mt-4 max-w-2xl text-balance text-4xl font-black uppercase leading-[0.95] tracking-[-0.05em] md:text-5xl">

@@ -52,7 +52,7 @@ export default async function RegisterPage({
       </SiteHeader>
 
       <main id="main">
-        <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24 lg:px-10">
+        <section className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28 lg:px-10">
           <div className="grid gap-10 lg:grid-cols-[2fr_1fr] lg:gap-16">
             <RegistrationForm />
 

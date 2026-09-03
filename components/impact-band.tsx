@@ -15,7 +15,7 @@ import { impactStats } from '@/lib/site'
 export function ImpactBand() {
   return (
     <section className="blueprint-invert bg-primary text-primary-foreground" aria-label="The hub in numbers">
-      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-20 lg:px-10">
+      <div className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24 lg:px-10">
         <div className="grid gap-px bg-primary-foreground/20 md:grid-cols-3">
           {impactStats.map((stat) => (
             <div key={stat.label} className="bg-primary py-5 md:px-8 md:py-2 md:first:pl-0 md:last:pr-0">
