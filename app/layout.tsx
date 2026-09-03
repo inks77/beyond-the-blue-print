@@ -1,9 +1,40 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Archivo, IBM_Plex_Mono } from 'next/font/google'
 
 import { SiteFooter } from '@/components/site-footer'
 import { getImage } from '@/lib/images'
 import './globals.css'
+
+/* The sheet is lettered, not typeset in whatever the browser has lying around.
+   Both faces are self-hosted by next/font -- the files are emitted into the
+   build and preloaded from our own origin, so there is no third-party font
+   request on any route and no swap flash from a CDN that is having a bad day.
+
+   Archivo is a grotesque with a real 900. That matters here rather than being a
+   preference: every display line on this site is set `font-black uppercase` at
+   negative tracking, and the previous stack topped out at Arial Bold -- the
+   browser was faking the weight, so a heading and a subhead were rendering at
+   the same one. The drawn 900 is what makes the headings read as drawn.
+
+   IBM Plex Mono carries the annotations -- eyebrows, drawing numbers, the
+   Kampala / Uganda mark. A drafting sheet's small lettering is a mono, and this
+   one was cut for technical documents; Courier New is a typewriter. */
+const archivo = Archivo({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-archivo',
+})
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  /* Plex Mono is not a variable font, so the weights have to be named. These
+     are the three the annotations actually use -- shipping the other five
+     would be four files nobody downloads. */
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-plex-mono',
+})
 
 /* Icons and the share card come out of the image database like everything else,
    so `pnpm check:images` catches a missing one before it ships. */
@@ -58,7 +89,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
+    <html lang="en" className={`${archivo.variable} ${plexMono.variable} bg-background`}>
       <body className="antialiased">
         {/* One element as the sole body child, on every route: it is what
             establishes the stacking context that `body > * { z-index: 1 }` in

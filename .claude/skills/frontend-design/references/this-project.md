@@ -19,6 +19,22 @@ no `tailwind.config`), `@base-ui/react` primitives, `lucide-react` icons,
 `tw-animate-css`. No animation library is installed — see the `motion` skill for
 what that means in practice.
 
+## Type
+
+Two families, loaded by `next/font` in `app/layout.tsx` and self-hosted — no
+third-party font request on any route.
+
+- **Archivo** (`--font-sans`) — a grotesque with a real 900. Every display line
+  is `font-black uppercase` at negative tracking; a stack without a drawn 900
+  makes a heading and a subhead render at the same weight.
+- **IBM Plex Mono** (`--font-mono`, weights 400/500/600) — the annotations:
+  eyebrows, drawing numbers, the `Kampala / Uganda` mark.
+
+`.font-black.uppercase` carries a `word-spacing` of `0.06em` in `globals.css`.
+Negative tracking closes word spaces along with letter spaces, and Archivo's
+space is narrower than the Arial the tracking values were originally set
+against. Do not remove it and do not re-tune the tracking to compensate.
+
 ## Tokens
 
 All in `app/globals.css` under `:root` and `@theme inline`.
@@ -27,14 +43,31 @@ All in `app/globals.css` under `:root` and `@theme inline`.
 | --- | --- | --- |
 | `--brand-blue` | `#154e91` | Matched to the colour-managed backdrop of `public/btb-logo.mp4`. Do not "correct" it. |
 | `--background` | warm cream | The sheet |
-| `--accent` | coral | The one "go" colour — actions only |
+| `--accent` | coral | The one "go" colour — actions only. A **fill**: 2.42:1 on the sheet, so never small type on cream. |
+| `--accent-ink` | coral as type | The same hue at a lightness that reads as type. Darkened on cream, lifted on blue by `.blueprint-invert`. |
 | `--destructive` | deep red | Exists because coral means go; errors need their own hue |
-| `--focus-ring` | darkened accent | Re-pointed to `--accent` on blue surfaces so 3:1 holds on both |
+| `--focus-ring` | darkened accent | Re-pointed to `--accent-ink` on blue surfaces so 3:1 holds on both |
 | `--radius` | `0rem` | Square. Always. |
+
+Coral is two tokens because a fill and a piece of type are not the same colour.
+`bg-accent` for the fill, `text-accent-ink` for coral type — and `text-accent`
+only where the surface is the near-black `--accent-foreground`.
 
 Rules: no raw hex in components; derive with `color-mix()` or an alpha suffix;
 if you must add a token, add the comment explaining why alongside it, in the
-voice the file already uses.
+voice the file already uses. Every colour value in `:root` is checked to be
+inside the sRGB gamut — an `oklch()` that asks for more chroma than the gamut
+holds is silently re-mapped by the browser, which means the palette gets picked
+by the gamut-mapper instead of by you.
+
+**Anything global in `globals.css` goes in a layer.** Unlayered CSS outranks
+every layer whatever the selector, so a bare `* { … }` or `.eyebrow { … }` beats
+the utilities it is supposed to be a default for. `* { border-color }` is in
+`@layer base`, `.eyebrow` in `@layer components`. Both were unlayered once and
+both silently overrode every per-surface colour on the site.
+
+Alpha copy on the coloured sheets is measured against the surface, not guessed:
+`/70` is the first step that clears 4.5:1 on blue, `/75` the first on coral.
 
 ## The grid utilities
 
@@ -42,8 +75,10 @@ voice the file already uses.
   `--bp-line` / `--bp-line-strong`.
 - `.blueprint-surface` + a `.blueprint-layer.blueprint-grid` child — a coloured
   band that paints its own contained grid on top of its fill.
-- `.blueprint-invert` — white-alpha lines for blue sheets; also re-points
-  `--focus-ring`.
+- `.blueprint-invert` — the token set for anything on a blue sheet: white-alpha
+  lines, and `--accent-ink` / `--focus-ring` re-pointed for the surface. It
+  paints nothing on its own, so a flat blue band takes it too (`impact-band`
+  does) purely to get the tokens right.
 - Coral surfaces take no grid at all — the accent stays flat.
 - `body::before` — the fixed global sheet behind everything.
 

@@ -51,12 +51,12 @@ export function ProgramsExplorer() {
                 <span className="font-mono text-xs">{program.number}</span>
                 <ArrowUpRight
                   className={`size-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${
-                    previewProgram === program.slug ? 'text-accent' : ''
+                    previewProgram === program.slug ? 'text-accent-ink' : ''
                   }`}
                 />
               </div>
               <div className="relative mt-16">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-accent">{program.label}</p>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-accent-ink">{program.label}</p>
                 <h3 className="text-2xl font-black uppercase tracking-[-0.03em]">{program.title}</h3>
               </div>
             </Link>
@@ -67,7 +67,7 @@ export function ProgramsExplorer() {
           id="program-detail"
           className="blueprint-invert grid gap-8 border-x border-b border-border bg-primary p-7 text-primary-foreground md:grid-cols-[1fr_2fr] md:p-10"
         >
-          <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary-foreground/60">
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-primary-foreground/70">
             {active.label} / {active.number}
           </p>
           <div>
@@ -75,7 +75,7 @@ export function ProgramsExplorer() {
             <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
               <Link
                 href={programHref(active)}
-                className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-accent"
+                className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-accent-ink"
               >
                 Open {active.label} <ArrowUpRight className="size-4" />
               </Link>

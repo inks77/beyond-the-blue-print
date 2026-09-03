@@ -109,7 +109,7 @@ export default function ConferencePage() {
                   </div>
                   <Link
                     href={registerHref(way.capacity)}
-                    className="mt-8 flex w-fit items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground underline decoration-accent decoration-2 underline-offset-4"
+                    className="mt-8 flex w-fit items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-accent-foreground underline decoration-accent-ink decoration-2 underline-offset-4"
                   >
                     {way.action} <ArrowUpRight className="size-4" />
                   </Link>
